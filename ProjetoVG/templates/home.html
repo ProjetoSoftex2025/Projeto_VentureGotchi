@@ -1,25 +1,27 @@
 {% load static %}
-<!DOCTYPE html> 
-<html lang="pt-br"> 
-<head> 
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Projeto Venture Gotchi</title>
-    <link rel="stylesheet" href="{% static '/style.css' %}">
-</head> 
-<body> 
+    <link rel="stylesheet" href="{% static '/style.css' %}" />
+  </head>
+  <body>
     <h1>Bem vindo {{nome_usuario}}!</h1>
-    <h1>Esta é a Venture Gotchi</h1> 
-    <p> prepare-se para novos desafios</p> 
-    <h2> Prepare-se para novos desafios!</h2>
+    <h1>Esta é a Venture Gotchi</h1>
+    <p>prepare-se para novos desafios</p>
+    <h2>Prepare-se para novos desafios!</h2>
     <ul>
-        {% for atos in atividades %}
-            <li>{{atos}}</li>
-        {% endfor %}
+      {% for atos in atividades %}
+      <li>{{atos}}</li>
+      {% endfor %}
     </ul>
 
-        {% if nome_usuario == 'Gotcher' %}
-        <p>Este é o desafio para {{nome_usuario}}!</p>
-        {% endif %}
-</body> 
+    {% if nome_usuario == 'Gotcher' %}
+    <p>Este é o desafio para {{nome_usuario}}!</p>
+    {% endif %}
+    <!--  Link para ir ao Dashboard do usuário -->
+    <a href="/dashboard/">Ir para o Dashboard</a>
+  </body>
 </html>
