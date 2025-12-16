@@ -1,0 +1,10 @@
+:root {
+  --color-primary: #6C3BFF;     /* Roxo Digital */
+  --color-secondary: #3A7DFF;   /* Azul Tech */
+  --color-success: #2ECC71;     /* Verde Progresso */
+  --color-bg: #F4F4F4;
+  --color-dark: #1E1E1E;
+
+  --radius: 12px;
+  --shadow-soft: 0 4px 12px rgba(0,0,0,.1);
+}
