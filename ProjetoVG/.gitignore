@@ -1,2 +1,5 @@
-__pycache__/
-*.pyc
+__pycache__/ #Ignora a pasta __pycache__
+*.pyc #Ignora arquivos pyc
+.vscode #Ignora a pasta VSCode
+*.db #Ignora o banco SQLite
+.venv #Ignora a pasta do ambiente virtual
