@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required  # Importa o login obrigatório
+from .models import Progresso  # Importa o modelo Progresso
 
 # from django.http import HttpResponse
 
@@ -17,9 +19,15 @@ def dashboard(request):
     return render(request, "dashboard.html")
 
 
-def progresso(request):  # Define a view chamada progresso
-    # XP simulado (futuramente esse valor virá do banco de dados do usuário)
-    xp = 120
+@login_required
+def progresso(request):
+    progresso, created = Progresso.objects.get_or_create(
+        usuario=request.user
+    )  # O aluno vai começar com 0 pontos, 0 posição e nível Iniciante
+
+    xp = (
+        progresso.pontos
+    )  # XP simulado (futuramente esse valor virá do banco de dados do usuário)
 
     # Lógica de nível baseada no XP
     if xp < 100:
