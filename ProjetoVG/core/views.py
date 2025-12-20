@@ -17,13 +17,7 @@ def dashboard(request):
     return render(request, "dashboard.html")
 
 
-def progresso(request):
-    # Função chamando a página progresso.html
-# Importa a função render do Django, que serve para juntar um template HTML com dados
-from django.shortcuts import render
-
-# Define a view chamada progresso
-def progresso(request):
+def progresso(request):  # Define a view chamada progresso
     # XP simulado (futuramente esse valor virá do banco de dados do usuário)
     xp = 120
 
@@ -55,10 +49,10 @@ def progresso(request):
     # Cria um dicionário chamado context, que guarda todas as informações
     # Esse dicionário será enviado para o template HTML
     context = {
-        "xp": xp,                # quantidade de experiência atual
-        "nivel": nivel,          # nível atual do usuário
-        "proximo": proximo,      # próximo nível que ele pode alcançar
-        "porcentagem": porcentagem  # porcentagem de progresso até o próximo nível
+        "xp": xp,  # quantidade de experiência atual
+        "nivel": nivel,  # nível atual do usuário
+        "proximo": proximo,  # próximo nível que ele pode alcançar
+        "porcentagem": porcentagem,  # porcentagem de progresso até o próximo nível
     }
 
     # Renderiza o template progresso.html, passando o contexto com os dados
