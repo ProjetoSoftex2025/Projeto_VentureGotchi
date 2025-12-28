@@ -1,34 +1,27 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+{% extends "base.html" %}
 
-    <!-- Exibe o título da página do dashboard -->
-    <title>Dashboard - Venture Gotchi</title>
+{% block title %}Dashboard - VentureGotchi{% endblock %}
 
-    <link rel="stylesheet" href="{% static 'style.css' %}" />
-  </head>
-  <body>
-    <!-- Título do Dashboard -->
-    <h1>Dashboard do Aluno</h1>
+{% block content %}
+<section class="dashboard">
 
-    <!-- Exibe o nome do aluno logado -->
-    <p><strong>Aventureiro Gotchi:</strong> @{{ request.user.username }}</p>
+  <h1>Dashboard do Aluno</h1>
 
-    <!-- TODO: Substituir o nível e o XP fixos por um nível dinâmico -->
+  <p>
+    <strong>Aventureiro Gotchi:</strong>
+    @{{ request.user.username }}
+  </p>
 
-    <!-- Exibe o nível atual do aluno -->
-    <p><strong>Nível atual:</strong> Iniciante</p>
 
-    <!-- Exibe a quantidade atual de XP do aluno -->
-    <p><strong>XP:</strong> 100</p>
+  <p><strong>Nível atual:</strong> Iniciante</p>
 
-    <!-- Exibe uma mensagem de incentivo -->
-    <p>
-      Parabéns por chegar até aqui. Você está evoluindo! Continue realizando
-      atividades para subir de nível.
-    </p>
-  </body>
-</html>
+
+  <p><strong>XP:</strong> 100</p>
+
+  <p>
+    Parabéns por chegar até aqui. Você está evoluindo!
+    Continue realizando atividades para subir de nível.
+  </p>
+
+</section>
+{% endblock %}
