@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}VentureGotchi{% endblock %}</title>
+
+  <!-- CSS principal -->
+  <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+  <link rel="stylesheet" href="{% static 'css/variables.css' %}">
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  <link rel="stylesheet" href="{% static 'css/components.css' %}">
+  <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+</head>
+
+<body>
+
+  <!-- Topbar global -->
+  <header class="topbar">
+    <h1>VentureGotchi</h1>
+    <div class="user-level">Lv 3</div>
+  </header>
+
+  <!-- Conteúdo das páginas -->
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+
+  <!-- JS -->
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
