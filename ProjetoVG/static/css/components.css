@@ -1,0 +1,26 @@
+.mission {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-secondary);
+  color: white;
+  padding: 14px;
+  margin: 10px 0;
+  border-radius: var(--radius);
+  font-size: .95rem;
+}
+
+.mission::after {
+  content: "+XP";
+  font-size: .8rem;
+  opacity: .8;
+}
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+.xp-bar span {
+  animation: pulse 2s infinite;
+}
