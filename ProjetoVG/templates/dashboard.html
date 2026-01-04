@@ -1,3 +1,4 @@
+
 {% extends "base.html" %}
 
 {% block title %}Dashboard - VentureGotchi{% endblock %}
@@ -25,3 +26,127 @@
 
 </section>
 {% endblock %}
+=======
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Exibe o título da página do dashboard -->
+    <title>Dashboard - Venture Gotchi</title>
+
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, sans-serif;
+        background-color: #3a7dff; /* Azul Tech */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        color: #1e1e1e; /* Cinza Escuro */
+      }
+
+      .dashboard-card {
+        background: #f4f4f4; /* Cinza Neutro */
+        padding: 30px;
+        border-radius: 15px;
+        max-width: 600px;
+        width: 100%;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        animation: fadeIn 1s ease;
+      }
+
+      h1 {
+        text-align: center;
+        color: #6c3bff; /* Roxo Digital */
+        margin-bottom: 20px;
+      }
+
+      .info {
+        margin-bottom: 12px;
+        font-size: 16px;
+        color: #1e1e1e;
+      }
+
+      .barra {
+        background: #e0e0e0;
+        border-radius: 25px;
+        height: 25px;
+        overflow: hidden;
+        margin-top: 10px;
+      }
+
+      .barra-progresso {
+        background: #2ecc71; /* Verde Progresso */
+        height: 100%;
+        width: 40%; /* Exemplo fixo, pode ser dinâmico com {{ porcentagem }} */
+        color: white;
+        text-align: center;
+        line-height: 25px;
+        font-weight: bold;
+        transition: width 0.6s ease;
+      }
+
+      .btn {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background: #3a7dff; /* Azul Tech */
+        color: white;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background 0.3s ease;
+      }
+      .btn:hover {
+        background: #2a5ed1;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="dashboard-card">
+      <!-- Título do Dashboard -->
+      <h1>Dashboard do Aluno</h1>
+
+      <!-- Exibe o nome do aluno logado -->
+      <p><strong>Aventureiro Gotchi:</strong> @{{ request.user.username }}</p>
+
+      <!-- TODO: Substituir o nível e o XP fixos por um nível dinâmico -->
+
+      <!-- Exibe o nível atual do aluno -->
+      <p class="info"><strong>Nível atual:</strong> {{ nivel }}</p>
+
+      <!-- Exibe a quantidade atual de XP do aluno -->
+      <p class="info"><strong>XP atual:</strong> {{ xp }}</p>
+
+      <!-- Exibe uma mensagem de incentivo -->
+      <p class="info">
+        🎉 Parabéns por chegar até aqui. Você está evoluindo! Continue
+        realizando atividades para subir de nível.
+      </p>
+      <p class="info">Evolução:</p>
+      <div class="barra">
+        <div class="barra-progresso">{{ porcentagem }}%</div>
+      </div>
+      <!-- Próximo nível -->
+      <p class="info"><strong>Próximo nível:</strong> {{ proximo }}</p>
+      <!-- Botão para página de progresso -->
+      <a href="{% url 'progresso' %}" class="btn">Ir para Progresso</a>
+    </div>
+  </body>
+</html>
