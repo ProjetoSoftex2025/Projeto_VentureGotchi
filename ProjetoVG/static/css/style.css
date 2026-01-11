@@ -1,3 +1,20 @@
+/*
+Arquivo legado.
+
+Este arquivo NÃO deve conter estilos globais.
+Estilos ativos devem ser definidos em:
+- reset.css
+- variables.css
+- base.css
+- components.css
+- dashboard.css
+
+Mantido apenas por compatibilidade e histórico do projeto.
+*/
+
+
+
+
 /* static/css/style.css */ 
 /*
 body { 
@@ -37,6 +54,8 @@ li {
 }
 */
 /* static/css/style.css */ 
+
+/*
 body {
      font-family: Arial, sans-serif; 
      background-color: #3A7DFF; 
@@ -45,6 +64,7 @@ body {
 } 
 h1 {
      color: #2ecc71; /* Um azul Django */ 
+/*
 } 
 ul { 
     background-color: #fffb01; 
