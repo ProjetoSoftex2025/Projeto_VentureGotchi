@@ -14,3 +14,58 @@
     padding: 24px;
   }
 }
+
+/* Avatar Card */
+.avatar-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.avatar-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.avatar-image {
+  width: 64px;
+  height: 64px;
+  background: var(--color-bg);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-placeholder {
+  font-size: 2rem;
+}
+
+.avatar-info h2 {
+  margin: 0;
+}
+
+.avatar-info .level {
+  font-size: 0.9rem;
+  color: var(--color-muted);
+}
+
+/* Stats */
+.stats {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.stats li {
+  display: flex;
+  justify-content: space-between;
+  background: var(--color-bg-soft);
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+}

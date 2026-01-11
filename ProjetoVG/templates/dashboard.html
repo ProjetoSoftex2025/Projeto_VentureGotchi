@@ -5,6 +5,29 @@
 {% block content %}
 <main class="dashboard">
 
+  <section class="card avatar-card">
+    <div class="avatar-header">
+      <div class="avatar-image">
+        <span class="avatar-placeholder">🤖</span>
+      </div>
+
+      <div class="avatar-info">
+        <h2>Seu Gotchi</h2>
+        <p class="level">
+          Nível: <strong>{{ nivel }}</strong>
+        </p>
+      </div>
+    </div>
+
+    <ul class="stats">
+      <li>💻 Técnica <span>12</span></li>
+      <li>🎨 Criatividade <span>8</span></li>
+      <li>📈 Disciplina <span>10</span></li>
+      <li>🤝 Liderança <span>6</span></li>
+    </ul>
+  </section>
+
+
   <section class="card">
     <h1>Dashboard do Aluno</h1>
 
