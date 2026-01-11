@@ -1,23 +1,15 @@
 .dashboard {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 24px;
   padding: 16px;
-}
-
-/* Cards */
-.avatar-card,
-.missions {
-  background: white;
-  padding: 20px;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-soft);
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 /* Desktop */
 @media (min-width: 768px) {
   .dashboard {
-    display: grid;
     grid-template-columns: 1fr 2fr;
     padding: 24px;
   }

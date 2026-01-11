@@ -3,10 +3,10 @@
 {% block title %}Dashboard | VentureGotchi{% endblock %}
 
 {% block content %}
-<section class="dashboard">
+<main class="dashboard">
 
   <section class="card">
-    <h2>Dashboard do Aluno</h2>
+    <h1>Dashboard do Aluno</h1>
 
     <p>
       <strong>Aventureiro Gotchi:</strong>
@@ -25,12 +25,12 @@
   </section>
 
   <section class="card">
-    <h3>Evolução</h3>
+    <h2>Evolução</h2>
 
     <div class="xp-bar">
       <div
         class="xp-progress animate"
-        style="width: {{ porcentagem }}%;">
+        style="width: {{ porcentagem|default:0 }}%;">
       </div>
     </div>
 
@@ -39,5 +39,5 @@
     </p>
   </section>
 
-</section>
+</main>
 {% endblock %}
