@@ -19,7 +19,7 @@
     <p><strong>XP atual:</strong> {{ xp }}</p>
 
     <p>
-      🎉 Parabéns por chegar até aqui.  
+      🎉 Parabéns por chegar até aqui.
       Continue realizando atividades para subir de nível.
     </p>
   </section>
@@ -27,10 +27,13 @@
   <section class="card">
     <h2>Evolução</h2>
 
+    <a href="{% url 'progresso' %}" class="btn">
+      Ver detalhes do progresso
+    </a>
+
+
     <div class="xp-bar">
-      <div
-        class="xp-progress animate"
-        style="width: {{ porcentagem|default:0 }}%;">
+      <div class="xp-progress animate" style="width: {{ porcentagem|default:0 }}%;">
       </div>
     </div>
 

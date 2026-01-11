@@ -66,3 +66,4 @@ def progresso(request):
 
     # Renderiza o template progresso.html, passando o contexto com os dados
     return render(request, "progresso.html", context)
+#alteração para parte simplificada dos views
