@@ -6,8 +6,15 @@
   color: white;
   padding: 14px;
   margin: 10px 0;
-  border-radius: var(--radius);
+  border-radius: var(--radius, 12px);
   font-size: .95rem;
+  cursor: pointer;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.mission:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,.15);
 }
 
 .mission::after {
@@ -15,12 +22,13 @@
   font-size: .8rem;
   opacity: .8;
 }
+
 @keyframes pulse {
   0% { transform: scale(1); }
   50% { transform: scale(1.03); }
   100% { transform: scale(1); }
 }
 
-.xp-bar span {
+.xp-progress.animate {
   animation: pulse 2s infinite;
 }
