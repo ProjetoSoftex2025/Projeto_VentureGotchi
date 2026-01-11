@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Crie sua Conta | VentureGotchi{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="login-card">
+  <h1>Crie sua Conta</h1>
+
+
+  <!-- Aviso de regras -->
+  <div class="password-rules">
+    <p><strong>Regras da senha:</strong></p>
+    <ul>
+      <li>Mínimo de 8 caracteres</li>
+      <li>Não pode ser parecida com o nome de usuário</li>
+      <li>Não pode ser apenas números</li>
+      <li>Use uma senha com caracteres especiais (!@#$%^&*-+)</li>
+      <li>Evite senhas comuns (ex: 123456, password)</li>
+    </ul>
+  </div>
+
+  <!-- ERROS DO DJANGO -->
+  {% if form.errors %}
+    <div class="error-box">
+      {{ form.errors }}
+    </div>
+  {% endif %}
+
+  <form method="post">
+    {% csrf_token %}
+
+    {{ form.non_field_errors }}
+
+    <div class="form-group">
+      {{ form.username.label_tag }}
+      {{ form.username }}
+    </div>
+
+    <div class="form-group">
+     {{ form.email.label_tag }}
+      {{ form.email }}
+    </div>
+
+    <div class="form-group">
+      {{ form.password1.label_tag }}
+      {{ form.password1 }}
+    </div>
+
+    <div class="form-group">
+      {{ form.password2.label_tag }}
+      {{ form.password2 }}
+    </div>
+
+    <button type="submit" class="btn">Cadastrar</button>
+  </form>
+
+  <p style="margin-top: 16px;">
+    Já tem conta?
+    <a href="{% url 'login' %}">Entrar</a>
+  </p>
+</div>
+{% endblock %}

@@ -13,3 +13,11 @@ class Progresso(models.Model):
     pontos = models.IntegerField(default=0)
     posicao = models.IntegerField(default=0)
     nivel = models.CharField(max_length=50, choices=NIVEL_CHOICES, default="Iniciante")
+
+class UserProgress(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE) 
+    level = models.IntegerField(default=1) 
+    xp = models.IntegerField(default=0) 
+    next_level = models.IntegerField(default=100) 
+    def __str__(self): 
+        return f"{self.user.username} - Nível {self.level}"

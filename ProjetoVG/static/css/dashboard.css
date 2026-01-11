@@ -1,3 +1,4 @@
+/* Layout principal */
 .dashboard {
   display: flex;
   flex-direction: column;
@@ -14,7 +15,79 @@
   box-shadow: var(--shadow-soft);
 }
 
-/* Desktop */
+/* Card principal */ 
+.dashboard-card {
+   background: #f4f4f4;
+   padding: 30px; 
+   border-radius: 15px; 
+   max-width: 600px; 
+   width: 100%; 
+   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); 
+   animation: fadeIn 1s ease; 
+} 
+
+/* Títulos */ 
+.dashboard-card h1 {
+   text-align: center; 
+   color: #6c3bff; 
+   margin-bottom: 20px;
+} 
+
+/* Texto informativo */ 
+.info { 
+  margin-bottom: 12px; 
+  font-size: 16px; 
+  color: #1e1e1e; 
+} 
+/* Barra de progresso */ 
+.barra { 
+  background: #e0e0e0; 
+  border-radius: 25px; 
+  height: 25px; 
+  overflow: hidden; 
+  margin-top: 10px;
+} 
+  
+.barra-progresso { 
+  background: #2ecc71; 
+  height: 100%; 
+  color: white; 
+  text-align: center; 
+  line-height: 25px; 
+  font-weight: bold; 
+  transition: width 0.6s ease;
+  white-space: nowrap;
+} 
+
+/* Botão */ 
+.btn { 
+  display: inline-block; 
+  margin-top: 20px; 
+  padding: 10px 20px; 
+  background: #3a7dff; 
+  color: white; 
+  border-radius: 8px; 
+  text-decoration: none; 
+  font-weight: bold; 
+  transition: background 0.3s ease; 
+} 
+  
+  .btn:hover { 
+    background: #2a5ed1; 
+} 
+/* Animação */ 
+@keyframes fadeIn { 
+  from {
+     opacity: 0;
+     transform: translateY(20px);
+     } 
+     to { 
+      opacity: 1; 
+      transform: translateY(0);
+     } 
+}
+
+/* Desktop layout */
 @media (min-width: 768px) {
   .dashboard {
     display: grid;
