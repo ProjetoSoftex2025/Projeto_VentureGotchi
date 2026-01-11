@@ -17,6 +17,7 @@ def home(request):
 def dashboard(request):
     # Função chamando a página dashboard.html
     return render(request, "dashboard.html")
+    
 
 
 @login_required
