@@ -1,0 +1,109 @@
+/* Card de login (herda layout do base.html) */
+.login-card {
+  background: #f4f4f4;
+  padding: 30px;
+  border-radius: 15px;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.8s ease;
+}
+
+/* Título */
+.login-card h1 {
+  text-align: center;
+  color: #6c3bff;
+  margin-bottom: 20px;
+}
+
+/* Texto auxiliar */
+.login-card p {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+
+/* Grupo de campos */
+.form-group {
+  margin-bottom: 15px;
+}
+
+/* Labels */
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+/* Inputs */
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+/* Input foco */
+.form-group input:focus {
+  outline: none;
+  border-color: #6c3bff;
+  box-shadow: 0 0 0 2px rgba(108, 59, 255, 0.2);
+}
+
+/* Botão reutilizado */
+.btn {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* Erros */
+.errorlist {
+  background: #ffe5e5;
+  color: #b30000;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+/* Animação */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Regras de senha */
+.password-rules {
+  background: #e9f1ff;
+  border-left: 4px solid #3a7dff;
+  padding: 12px;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+.password-rules ul {
+  padding-left: 18px;
+  margin: 8px 0 0;
+}
+
+/* Caixa de erros personalizada */
+.error-box {
+  background: #ffe6e6;
+  border-left: 4px solid #ff4d4d;
+  padding: 12px;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+.error-box ul {
+  margin: 0;
+  padding-left: 18px;
+}

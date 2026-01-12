@@ -1,6 +1,11 @@
 from django.shortcuts import render
+from .forms import CustomUserCreationForm  #Importa formulário personalizado com email
+from django.shortcuts import redirect # Importa o redirecionamento quando necesario
+from django.contrib.auth.views import LoginView # Importa a view de login
+from django.contrib.auth import login # Importa a função de login
 from django.contrib.auth.decorators import login_required  # Importa o login obrigatório
 from .models import Progresso  # Importa o modelo Progresso
+
 
 # from django.http import HttpResponse
 
@@ -14,6 +19,7 @@ def home(request):
     return render(request, "home.html", context)
 
 
+@login_required
 def dashboard(request):
     # Função chamando a página dashboard.html
     return render(request, "dashboard.html")
@@ -65,3 +71,26 @@ def progresso(request):
 
     # Renderiza o template progresso.html, passando o contexto com os dados
     return render(request, "progresso.html", context)
+
+class CustomLoginView(LoginView): #cria a classe para o login
+    template_name = 'registration/login.html'
+
+def register(request):
+    print(">>> ENTROU NA VIEW REGISTER <<<")
+
+    if request.method == "POST":
+        print(">>> RECEBEU POST <<<")
+        form = CustomUserCreationForm(request.POST)  #Usa o form customizado
+
+        if form.is_valid():
+            print(">>> FORM VÁLIDO <<<")
+            user = form.save()
+            login(request, user)
+            return redirect("dashboard")
+        else:
+            print(">>> FORM INVÁLIDO <<<")
+            print(form.errors)
+    else:
+        form = CustomUserCreationForm()
+
+    return render(request, "registration/register.html", {"form": form})
