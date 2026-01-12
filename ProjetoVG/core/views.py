@@ -7,9 +7,6 @@ from django.contrib.auth.decorators import login_required  # Importa o login obr
 from .models import Progresso  # Importa o modelo Progresso
 
 
-# from django.http import HttpResponse
-
-
 def home(request):
     # return HttpResponse("<h1> Bem Vindos à Venture Gotchi!</h1>")
     context = {
