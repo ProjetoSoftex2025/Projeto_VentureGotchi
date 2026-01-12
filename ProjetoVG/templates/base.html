@@ -1,33 +1,85 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <title>{% block title %}VentureGotchi{% endblock %}</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- CSS principal -->
-  <link rel="stylesheet" href="{% static 'css/reset.css' %}">
-  <link rel="stylesheet" href="{% static 'css/variables.css' %}">
-  <link rel="stylesheet" href="{% static 'css/base.css' %}">
-  <link rel="stylesheet" href="{% static 'css/components.css' %}">
-  <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
-</head>
+    <title>{% block title %}VentureGotchi{% endblock %}</title>
 
-<body>
+    <!-- CSS principal -->
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/variables.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/components.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
 
-  <!-- Topbar global -->
-  <header class="topbar">
-    <h1>VentureGotchi</h1>
-    <div class="user-level">Lv 3</div>
-  </header>
+    <!-- CSS específico da página -->
+    {% block extra_css %}{% endblock %}
 
-  <!-- Conteúdo das páginas -->
-  <main>
-    {% block content %}
-    {% endblock %}
-  </main>
+    <!-- Visual -->
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, sans-serif;
+        background-color: #3a7dff;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        margin: 0;
+        color: #1e1e1e;
+      }
 
-  <!-- JS -->
-  <script src="{% static 'js/main.js' %}"></script>
-</body>
+      main {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px 16px;
+      }
+
+      .dashboard-card {
+        background: #f4f4f4;
+        padding: 30px;
+        border-radius: 15px;
+        max-width: 600px;
+        width: 100%;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        animation: fadeIn 0.8s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Topbar global -->
+    <header class="topbar">
+      <h1>VentureGotchi</h1>
+
+      {% if user.is_authenticated %}
+      <div class="user-level">
+        Lv {{ request.user.profile.level|default:"1" }}
+      </div>
+      <form method="post" action="{% url 'logout' %}" style="display: inline">
+        {% csrf_token %}
+        <button type="submit">Sair</button>
+      </form>
+      {% endif %}
+    </header>
+
+    <!-- Conteúdo das páginas -->
+    <main>{% block content %} {% endblock %}</main>
+
+    <!-- JS -->
+    <script src="{% static 'js/main.js' %}"></script>
+  </body>
 </html>

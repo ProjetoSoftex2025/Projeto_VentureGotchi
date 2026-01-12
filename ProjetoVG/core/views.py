@@ -1,6 +1,11 @@
 from django.shortcuts import render
+from .forms import CustomUserCreationForm  #Importa formulário personalizado com email
+from django.shortcuts import redirect # Importa o redirecionamento quando necesario
+from django.contrib.auth.views import LoginView # Importa a view de login
+from django.contrib.auth import login # Importa a função de login
 from django.contrib.auth.decorators import login_required  # Importa o login obrigatório
 from .models import Progresso  # Importa o modelo Progresso
+
 
 # from django.http import HttpResponse
 
@@ -14,6 +19,7 @@ def home(request):
     return render(request, "home.html", context)
 
 
+@login_required
 def dashboard(request):
     # Função chamando a página dashboard.html
     return render(request, "dashboard.html")
