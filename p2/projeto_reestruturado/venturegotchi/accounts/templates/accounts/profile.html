@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Perfil | VentureGotchi</title>
+</head>
+<body>
+
+    <h1>Perfil do Usuário</h1>
+
+    <p><strong>Usuário:</strong> {{ user.username }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Bio:</strong> {{ user.bio }}</p>
+    <p><strong>Interesses:</strong> {{ user.interests }}</p>
+
+    <!-- Avatar inicial (placeholder) -->
+    <img src="{% static 'avatars/' %}{{ user.avatar }}"
+         alt="Avatar do usuário"
+         width="64" height="64">
+
+</body>
+</html>
