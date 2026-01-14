@@ -1,0 +1,51 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - VentureGotchi</title>
+
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+</head>
+<body>
+
+<div class="dashboard-container">
+
+    <!-- GOTCHI / PERFIL -->
+    <section class="gotchi-card">
+        <h2>{{ gotchi.user.username }}</h2>
+        <p>Nível {{ gotchi.level }}</p>
+        <p>{{ gotchi.xp }} XP</p>
+    </section>
+
+    <!-- ESTATÍSTICAS (PDF v1.2) -->
+    <section class="stats-card">
+        <h3>Habilidades</h3>
+
+        <ul class="stats-list">
+            <li>
+                <strong>Técnica</strong>
+                <span>{{ gotchi.tecnica }}</span>
+            </li>
+            <li>
+                <strong>Criatividade</strong>
+                <span>{{ gotchi.criatividade }}</span>
+            </li>
+            <li>
+                <strong>Disciplina</strong>
+                <span>{{ gotchi.disciplina }}</span>
+            </li>
+            <li>
+                <strong>Liderança</strong>
+                <span>{{ gotchi.lideranca }}</span>
+            </li>
+        </ul>
+    </section>
+
+</div>
+
+</body>
+</html>
+
+

@@ -1,0 +1,1 @@
+# Dashboard não possui models próprios

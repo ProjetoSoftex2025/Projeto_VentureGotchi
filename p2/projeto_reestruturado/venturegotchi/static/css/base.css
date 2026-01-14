@@ -1,0 +1,63 @@
+/* Base visual do VentureGotchi */
+
+body {
+    font-family: Inter, Arial, sans-serif;
+    background-color: #F4F4F4;
+    color: #1E1E1E;
+    margin: 0;
+    padding: 1rem;
+}
+
+h1, h2, h3 {
+    color: #6C3BFF;
+}
+
+/* ---------- XP BAR ---------- */
+
+.xp-container {
+    max-width: 400px;
+    margin: 1rem 0;
+}
+
+.xp-label {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+.xp-bar {
+    width: 100%;
+    height: 40px;
+    background-color: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.xp-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #6C3BFF, #9B7BFF);
+    transition: width 0.6s ease;
+}
+
+/* ---------- ELEMENTOS BÁSICOS ---------- */
+
+button {
+    padding: 0.4rem 0.8rem;
+    border: none;
+    border-radius: 6px;
+    background-color: #6C3BFF;
+    color: #fff;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 0.3rem;
+}
