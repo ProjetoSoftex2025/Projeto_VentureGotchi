@@ -11,9 +11,6 @@ class CustomLoginView(LoginView):
     template_name = "registration/login.html"
 
 
-# from django.http import HttpResponse
-
-
 def home(request):
     # return HttpResponse("<h1> Bem Vindos à Venture Gotchi!</h1>")
     context = {

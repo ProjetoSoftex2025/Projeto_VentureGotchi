@@ -1,3 +1,38 @@
+/* static/css/style.css */
+
+/* Layout principal */
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 24px;
+} /* Card principal da Home */
+.home-card {
+   background: #f4f4f4;
+   padding: 30px; 
+   border-radius: 15px; 
+   max-width: 600px; 
+   width: 100%; 
+   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); 
+   animation: fadeIn 1s ease; 
+} /* Títulos */
+.home-card h1 {
+  text-align: center;
+  color: #6c3bff; /* mesmo roxo do dashboard */
+  margin-bottom: 20px;
+} /* Texto informativo */
+.info {
+  margin-bottom: 12px;
+  font-size: 16px;
+  color: #1e1e1e;
+} /* Lista de desafios */
+.lista-desafios {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 10px;
 /*
 Arquivo legado.
 
