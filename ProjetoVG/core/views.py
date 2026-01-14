@@ -5,6 +5,10 @@ from django.contrib.auth.views import LoginView # Importa a view de login
 from django.contrib.auth import login # Importa a função de login
 from django.contrib.auth.decorators import login_required  # Importa o login obrigatório
 from .models import Progresso  # Importa o modelo Progresso
+#from django.contrib.auth.views import LoginView
+
+class CustomLoginView(LoginView):
+    template_name = "registration/login.html"
 
 
 # from django.http import HttpResponse
@@ -73,3 +77,16 @@ def progresso(request):
     # Renderiza o template progresso.html, passando o contexto com os dados
     return render(request, "progresso.html", context)
 #alteração para parte simplificada dos views
+
+def register(request):
+    if request.method == "POST":
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect("core:dashboard")
+    else:
+        form = CustomUserCreationForm()
+
+    return render(request, "registration/register.html", {"form": form})
+
