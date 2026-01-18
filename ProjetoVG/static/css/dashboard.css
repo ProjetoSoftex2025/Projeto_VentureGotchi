@@ -1,4 +1,28 @@
-/* Layout principal */
+/* ================================
+   🎨 Design Tokens (Variáveis)
+================================ */
+:root {
+  --primary: #6c3bff;
+  --primary-hover: #5a2ee0;
+  --success: #2ecc71;
+
+  --bg-main: #f4f4f4;
+  --bg-soft: #ffffff;
+  --bg-secondary: #ededed;
+
+  --text-main: #1e1e1e;
+  --text-muted: #777;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+
+  --shadow-card: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* ================================
+   📐 Layout Principal
+================================ */
 .dashboard {
   display: grid;
   grid-template-columns: 1fr;
@@ -8,88 +32,89 @@
   margin: 0 auto;
 }
 
-/* Card principal */ 
+/* ================================
+   🧩 Card Principal
+================================ */
 .dashboard-card {
-   background: #f4f4f4;
-   padding: 30px; 
-   border-radius: 15px; 
-   max-width: 600px; 
-   width: 100%; 
-   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); 
-   animation: fadeIn 1s ease; 
-} 
+  background: var(--bg-main);
+  padding: 30px;
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: var(--shadow-card);
+  animation: fadeIn 0.8s ease;
+}
 
-/* Títulos */ 
+/* ================================
+   📝 Títulos
+================================ */
 .dashboard-card h1 {
-   text-align: center; 
-   color: #6c3bff; 
-   margin-bottom: 20px;
-} 
+  text-align: center;
+  color: var(--primary);
+  margin-bottom: 20px;
+}
 
-/* Texto informativo */ 
-.info { 
-  margin-bottom: 12px; 
-  font-size: 16px; 
-  color: #1e1e1e; 
-} 
-/* Barra de progresso */ 
-.barra { 
-  background: #e0e0e0; 
-  border-radius: 25px; 
-  height: 25px; 
-  overflow: hidden; 
+/* ================================
+   ℹ️ Texto Informativo
+================================ */
+.info {
+  margin-bottom: 12px;
+  font-size: 16px;
+  color: var(--text-main);
+}
+
+/* ================================
+   📊 Barra de Progresso
+================================ */
+.barra {
+  background: #e0e0e0;
+  border-radius: 25px;
+  height: 25px;
+  overflow: hidden;
   margin-top: 10px;
-} 
-  
-.barra-progresso { 
-  background: #2ecc71; 
-  height: 100%; 
-  color: white; 
-  text-align: center; 
-  line-height: 25px; 
-  font-weight: bold; 
-  transition: width 0.6s ease;
+}
+
+.barra-progresso {
+  background: var(--success);
+  height: 100%;
+  color: #fff;
+  text-align: center;
+  line-height: 25px;
+  font-weight: bold;
   white-space: nowrap;
-} 
-
-/* Botão */ 
-.btn { 
-  display: inline-block; 
-  margin-top: 20px; 
-  padding: 10px 20px; 
-  background: #3a7dff; 
-  color: white; 
-  border-radius: 8px; 
-  text-decoration: none; 
-  font-weight: bold; 
-  transition: background 0.3s ease; 
-} 
-  
-  .btn:hover { 
-    background: #2a5ed1; 
-} 
-/* Animação */ 
-@keyframes fadeIn { 
-  from {
-     opacity: 0;
-     transform: translateY(20px);
-     } 
-     to { 
-      opacity: 1; 
-      transform: translateY(0);
-     } 
+  transition: width 0.6s ease;
+  padding: 0 8px;
 }
 
-/* Desktop layout */
-@media (min-width: 768px) {
-  .dashboard {
-    grid-template-columns: 1fr 2fr;
-    padding: 24px;
-  }
+/* ================================
+   🔘 Botão
+================================ */
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 22px;
+  background: var(--primary);
+  color: #fff;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
-/* Avatar Card */
+.btn:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+/* ================================
+   👤 Avatar Card
+================================ */
 .avatar-card {
+  background: var(--bg-soft);
+  padding: 20px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -104,8 +129,8 @@
 .avatar-image {
   width: 64px;
   height: 64px;
-  background: var(--color-bg);
-  border-radius: 12px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -121,10 +146,12 @@
 
 .avatar-info .level {
   font-size: 0.9rem;
-  color: var(--color-muted);
+  color: var(--text-muted);
 }
 
-/* Stats */
+/* ================================
+   📈 Stats
+================================ */
 .stats {
   list-style: none;
   padding: 0;
@@ -137,8 +164,77 @@
 .stats li {
   display: flex;
   justify-content: space-between;
-  background: var(--color-bg-soft);
+  background: var(--bg-secondary);
   padding: 8px 12px;
-  border-radius: var(--radius);
+  border-radius: var(--radius-sm);
   font-size: 0.85rem;
+}
+
+/* ================================
+   🎯 Missões
+================================ */
+.mission {
+  transition: background 0.2s ease, transform 0.2s ease;
+  position: relative;
+}
+
+.mission:hover {
+  background: var(--bg-secondary);
+  transform: translateX(4px);
+}
+
+.mission.completed {
+  opacity: 0.6;
+}
+
+.mission.completed::after {
+  content: "✔";
+  position: absolute;
+  right: 12px;
+  color: var(--primary);
+}
+
+/* ================================
+   🎞️ Animações
+================================ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================================
+   💻 Desktop Layout
+================================ */
+@media (min-width: 768px) {
+  .dashboard {
+    grid-template-columns: 1fr 2fr;
+    padding: 24px;
+  }
+}
+
+.dashboard-card {
+  background: #f4f4f4;
+  padding: 30px;
+  border-radius: 15px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
