@@ -1,126 +1,72 @@
-<!DOCTYPE html>
-<!-- Define que o documento é HTML5 -->
-<html lang="pt-br">
-  <!-- Início do documento HTML e idioma definido como português do Brasil -->
-  <head>
-    <meta charset="UTF-8" />
-    <!-- Define o padrão de caracteres (UTF-8), permitindo acentos -->
-    <title>Progresso do Usuário</title>
-    <!-- Título que aparece na aba do navegador -->
+{% extends "base.html" %}
+{% load static %}
 
-    <style>
-            /* Estilo aplicado ao corpo da página */
-            body {
-                font-family: 'Segoe UI', Tahoma, sans-serif; /* Fonte usada */
-                background-color: #3A7DFF; /* Azul Tech para fundo */
-                display: flex; /* Usa flexbox para organizar o conteúdo */
-                justify-content: center; /* Centraliza horizontalmente */
-                align-items: center; /* Centraliza verticalmente */
-                height: 100vh; /* Ocupa toda a altura da tela */
-                margin: 0; /* Remove margens padrão */
-                color: #1E1E1E; /* Cinza Escuro para texto */
-            }
+{% block title %}Progresso | Dashboard{% endblock %}
 
-            /* Estilo do cartão branco que contém as informações */
-            .card {
-                background: #F4F4F4; /* Fundo branco */
-                padding: 30px; /* Espaço interno */
-                border-radius: 15px; /* Bordas arredondadas */
-                max-width: 500px; /* Largura máxima */
-                width: 100%; /* Ocupa toda a largura disponível */
-                box-shadow: 0 8px 20px rgba(0,0,0,0.15); /* Sombra para destaque */
-                animation: fadeIn 1s ease; /* Animação de entrada suave */
-            }
+{% block content %}
+<section class="progress-container">
 
-            /* Estilo do título principal */
-            h1 {
-                text-align: center; /* Centraliza o texto */
-                color: #6C3BFF; /* Roxo Digital */
-                margin-bottom: 20px; /* Espaço abaixo do título */
-            }
-
-            /* Estilo dos textos informativos */
-            .info {
-                margin-bottom: 15px; /* Espaço entre linhas */
-                font-size: 16px; /* Tamanho da fonte */
-                color: #1E1E1E; /* Cinza Escuro */
-            }
-
-            /* Barra de fundo (trilho) do progresso */
-            .barra {
-                background: #e0e0e0; /* Cinza claro */
-                border-radius: 30px; /* Bordas arredondadas */
-                height: 30px; /* Altura da barra */
-                overflow: hidden; /* Esconde conteúdo que ultrapassar */
-                margin-top: 10px; /* Espaço acima da barra */
-            }
-
-            /* Barra verde que mostra o progresso */
-            .barra-progresso {
-                background: #2ECC71; /* Verde Progresso */
-                height: 100%; /* Ocupa toda a altura da barra */
-                width: {{ porcentagem }}%;
-                color: white; /* Texto branco */
-                text-align: center; /* Texto centralizado */
-                line-height: 30px; /* Alinha o texto verticalmente */
-                font-weight: bold; /* Texto em negrito */
-                transition: width 0.6s ease; /* Animação suave ao mudar largura */
-      }
-
-            /* Estilo do botão usando Azul Tech */
-            .btn {
-                display: inline-block; /* Exibe como bloco em linha */
-                margin-top: 20px; /* Espaço acima do botão */
-                padding: 10px 20px; /* Espaço interno */
-                background: #3A7DFF; /* Azul Tech */
-                color: white; /* Texto branco */
-                border-radius: 8px; /* Bordas arredondadas */
-                text-decoration: none; /* Remove sublinhado */
-                font-weight: bold; /* Texto em negrito */
-                transition: background 0.3s ease; /* Animação suave na cor */
-            }
-
-            /* Cor do botão quando o mouse passa por cima */
-            .btn:hover {
-                background: #2a5ed1;
-            }
-
-            /* Animação fadeIn: faz o card aparecer suavemente */
-            @keyframes fadeIn {
-                from {opacity: 0; transform: translateY(20px);} /* Começa invisível e deslocado */
-                to {opacity: 1; transform: translateY(0);} /* Termina visível e na posição normal */
-            }
-    </style>
-  </head>
-  <body>
-    <!-- Container principal -->
-    <div class="card">
-      <!-- Título -->
-      <h1>Progresso do Aventureiro Gotchi</h1>
-
-      <!-- Informações dinâmicas vindas do Python/Django -->
-      <p class="info"><strong>XP atual:</strong> {{ xp }}</p>
-      <p class="info"><strong>Nível:</strong> {{ nivel }}</p>
-      <p class="info"><strong>Próximo nível:</strong> {{ proximo }}</p>
-
-      <!-- Barra de progresso -->
-      <p class="info">Evolução:</p>
-      <div class="barra">
-        <div class="barra-progresso">
-          {{ porcentagem }}%
-          <!-- Mostra a porcentagem dentro da barra -->
-        </div>
-      </div>
-        <div class="ranking">
-<p><strong>Ranking pessoal:</strong></p>
-<ul>
-    <li>🔥 Pontos: {{ progresso.pontos }}</li>
-    <li>🏆 Posição: {{ progresso.posicao }}º lugar</li>
-    <li>🚀 Próximo nível: {{ progresso.nivel }}</li>
-</ul>
-
-      <!-- Botão opcional -->
-      <a href="#" class="btn">Ver mais conquistas</a>
+  <!-- NÍVEL ATUAL -->
+  <div class="card progress-summary">
+    <div class="level-info">
+      <h2>Nível 5</h2>
+      <p class="xp-text">420 XP / 600 XP</p>
     </div>
-  </body>
-</html>
+
+    <div class="xp-bar">
+      <div class="xp-bar-fill" style="width: 70%;"></div>
+    </div>
+
+    <span class="next-level">
+      Faltam <strong>180 XP</strong> para o próximo nível
+    </span>
+  </div>
+
+  <!-- GRID DE PROGRESSO -->
+  <div class="progress-grid">
+
+    <!-- EVOLUÇÃO -->
+    <div class="card progress-card">
+      <h3>Evolução por nível</h3>
+
+      <ul class="level-list">
+        <li class="level completed">Nível 1 <span>✔</span></li>
+        <li class="level completed">Nível 2 <span>✔</span></li>
+        <li class="level completed">Nível 3 <span>✔</span></li>
+        <li class="level completed">Nível 4 <span>✔</span></li>
+        <li class="level current">Nível 5 <span>70%</span></li>
+        <li class="level locked">Nível 6 <span>🔒</span></li>
+      </ul>
+    </div>
+
+    <!-- HISTÓRICO -->
+    <div class="card progress-card">
+      <h3>Histórico de missões</h3>
+
+      <ul class="mission-history">
+        <li>
+          <span>Finalizar dashboard</span>
+          <strong>+120 XP</strong>
+        </li>
+        <li>
+          <span>Criar card de avatar</span>
+          <strong>+80 XP</strong>
+        </li>
+        <li>
+          <span>Missões semanais</span>
+          <strong>+60 XP</strong>
+        </li>
+      </ul>
+    </div>
+
+    <!-- PRÓXIMA RECOMPENSA -->
+    <div class="card progress-card highlight">
+      <h3>Próxima recompensa</h3>
+      <p>🎁 Avatar raro desbloqueável</p>
+      <span class="reward-xp">Ao atingir 600 XP</span>
+    </div>
+
+  </div>
+
+</section>
+{% endblock %}
