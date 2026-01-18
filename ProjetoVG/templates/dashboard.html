@@ -1,10 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block body_class %}dashboard-page{% endblock %}
+
 {% block title %}Dashboard | VentureGotchi{% endblock %}
 
-{% block styles %}
-<link rel="stylesheet" href="{% static 'css/dashboard.css' %}"> 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -32,7 +34,6 @@
     </ul>
   </section>
 
-
   <section class="card">
     <h1>Dashboard do Aluno</h1>
 
@@ -59,10 +60,8 @@
       Ver detalhes do progresso
     </a>
 
-
     <div class="xp-bar">
-      <div class="xp-progress animate" style="width: {{ porcentagem|default:0 }}%;">
-      </div>
+      <div class="xp-progress animate" style="width: {{ porcentagem|default:0 }}%;"></div>
     </div>
 
     <p>
@@ -90,7 +89,6 @@
       </li>
     </ul>
   </section>
-
 
 </main>
 {% endblock %}

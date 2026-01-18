@@ -1,55 +1,47 @@
 /* ================================
-    Base Global
+   🎨 Variáveis Globais
 ================================ */
 :root {
   --color-bg: #f4f4f4;
   --color-dark: #1e1e1e;
-  --color-primary: #6c3bff;
+  --color-primary: #2563eb; /* azul tech */
 }
 
+/* ================================
+   🔧 Reset Básico
+================================ */
 * {
   box-sizing: border-box;
 }
 
+/* ================================
+   🌍 Body Global
+================================ */
 body {
   margin: 0;
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--color-bg);
-  color: var(--color-dark);
   min-height: 100vh;
+
+  font-family: "Segoe UI", Tahoma, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   line-height: 1.5;
+
+  color: var(--color-dark);
 }
 
-body {
-  font-family: "Segoe UI", Tahoma, sans-serif;
-  background-color: #3a7dff;
-  min-height: 100vh;
-  margin: 0;
-  color: #1e1e1e;
-}
-
+/* ================================
+   📦 Container principal
+================================ */
 main {
-  flex: 1;
   padding: 40px 16px;
 }
 
-
 /* ================================
-   Conteúdo Principal
-================================ */
-main {
-  padding: 24px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* ================================
-    Topbar
+   🧭 Topbar
 ================================ */
 .topbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   background: var(--color-primary);
   color: #fff;
   padding: 12px 16px;
@@ -61,7 +53,7 @@ main {
 }
 
 /* ================================
-    Nível do Usuário
+   👤 Nível do Usuário
 ================================ */
 .user-level {
   background: rgba(255, 255, 255, 0.2);
@@ -72,7 +64,7 @@ main {
 }
 
 /* ================================
-   Botões
+   🔘 Botões
 ================================ */
 .btn {
   display: inline-flex;
@@ -110,4 +102,15 @@ main {
 .btn:focus-visible {
   outline: 2px solid #fff;
   outline-offset: 2px;
+}
+
+/* ================================
+   🎨 Fundos por Página
+================================ */
+.dashboard-page {
+  background-color: var(--color-bg);
+}
+
+.progresso-page-bg {
+  background-color: blue;
 }
