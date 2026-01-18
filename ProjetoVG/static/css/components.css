@@ -1,3 +1,6 @@
+/* ================================
+   🎯 Missões
+================================ */
 .mission {
   display: flex;
   justify-content: space-between;
@@ -23,6 +26,9 @@
   opacity: .8;
 }
 
+/* ================================
+   ✨ XP
+================================ */
 @keyframes pulse {
   0% { transform: scale(1); }
   50% { transform: scale(1.03); }
@@ -32,3 +38,32 @@
 .xp-progress.animate {
   animation: pulse 2s infinite;
 }
+
+/* ================================
+   🏠 Home
+================================ */
+.home-wrapper {
+  min-height: calc(100vh - 64px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-card {
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 16px;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.lista-desafios {
+  margin: 16px 0;
+  padding-left: 20px;
+}
+
+.lista-desafios li {
+  margin-bottom: 4px;
+}
+

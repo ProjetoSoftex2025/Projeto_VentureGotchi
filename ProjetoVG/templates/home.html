@@ -1,25 +1,68 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends "base.html" %}
+{% load static %}
 
-<div class="home">
-  <div class="dashboard-card">
+{% block content %}
+<style>
+  /* Estilos para centralizar e adicionar sombra à caixa, como uma caixa de login */
+  .home-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh; /* Ajuste para ocupar a maior parte da tela */
+    background: #0056b3;
+  }
+  .home-box {
+    background: var(--bg-color, white);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Sombra para dar efeito de caixa */
+    max-width: 700px; /* Largura máxima para responsividade */
+    width: 100%;
+    text-align: center;
+  }
+  .home-box h1 {
+    margin-bottom: 1rem;
+  }
+  .home-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+  }
+  .home-box li {
+    margin-bottom: 0.5rem;
+  }
+  .home-box .btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: var(--primary-color, #007bff);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 1rem;
+  }
+  .home-box .btn:hover {
+    background: var(--primary-hover, #0056b3);
+  }
+</style>
+
+<div class="home-center">
+  <div class="home-box">
     <h1>Bem-vindo, {{ nome_usuario }}!</h1>
-    <p class="info">Esta é a <strong>Venture Gotchi</strong></p>
-    <p class="info">Prepare-se para novos desafios!</p>
 
-    <ul class="lista-desafios">
+    <p>Esta é a <strong>Venture Gotchi</strong></p>
+    <p>Prepare-se para novos desafios!</p>
+
+    <ul>
       {% for atos in atividades %}
-      <li>{{atos}}</li>
+        <li>{{ atos }}</li>
       {% endfor %}
     </ul>
 
-    {% if nome_usuario == 'Gotcher' %}
-    <p class="info">
-      Este é o desafio para <strong>{{ nome_usuario }}</strong>!
-    </p>
-    {% endif %}
-    <!--  Link para ir ao Dashboard do usuário -->
-    <a href="{% url 'dashboard' %}" class="btn">Ir para o Dashboard</a>
+    <p>Este é o desafio para <strong>{{ nome_usuario }}</strong>!</p>
+
+    <a href="{% url 'dashboard' %}" class="btn">
+      Ir para o Dashboard
+    </a>
   </div>
 </div>
-
 {% endblock %}
