@@ -1,128 +1,132 @@
-.progress-container {
+/* ================================
+   📄 Página
+================================ */
+.progresso-page {
   display: flex;
-  flex-direction: column;
-  gap: 24px;
+  justify-content: center;
+  padding: 48px 16px;
 }
 
-/* RESUMO */
-.progress-summary {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.level-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.xp-text {
-  font-weight: 500;
-  color: var(--text-muted);
-}
-
-.xp-bar {
+/* ================================
+   🧾 Card Principal
+================================ */
+.progresso-card {
   width: 100%;
-  height: 10px;
-  background-color: var(--bg-secondary);
-  border-radius: 6px;
+  max-width: 520px;
+  background: whitesmoke
+;
+  border-radius: 16px;
+  padding: 32px 28px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  color: #0f172a;
+}
+
+/* ================================
+   🧠 Cabeçalhos
+================================ */
+.progresso-card h1 {
+  font-size: 1.9rem;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: #64748b;
+  margin-bottom: 28px;
+}
+
+.bloco {
+  margin-bottom: 28px;
+}
+
+.bloco h2 {
+  font-size: 1.15rem;
+  margin-bottom: 6px;
+}
+
+/* ================================
+   🎯 Nível
+================================ */
+.nivel-numero {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.nivel-nome {
+  font-size: 0.95rem;
+  color: #64748b;
+}
+
+/* ================================
+   📊 Barra de XP
+================================ */
+.xp-bar {
+  height: 18px;
+  width: 100%;
+  background: #e5e7eb;
+  border-radius: 999px;
   overflow: hidden;
+  margin: 8px 0 6px;
 }
 
 .xp-bar-fill {
   height: 100%;
+  width: max(6px, var(--progress, 0%));
   background: linear-gradient(90deg, #6c63ff, #8f8cff);
-  transition: width 0.4s ease;
+  border-radius: 999px;
+  transition: width 0.6s ease;
 }
 
-.next-level {
+.xp-info {
   font-size: 0.9rem;
-  color: var(--text-muted);
+  color: #475569;
 }
 
-/* GRID */
-.progress-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+.xp-info span {
+  margin-left: 6px;
 }
 
-/* CARDS */
-.progress-card h3 {
-  margin-bottom: 12px;
-}
-
-/* EVOLUÇÃO */
-.level-list {
+/* ================================
+   📈 Estatísticas
+================================ */
+.stats-list {
   list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  padding: 0;
+  margin: 0;
 }
 
-.level {
+.stats-list li {
   display: flex;
   justify-content: space-between;
-  padding: 8px 12px;
-  border-radius: 8px;
-  background-color: var(--bg-secondary);
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+}
+
+/* ================================
+   🕘 Histórico
+================================ */
+.historico-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.historico-list li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
   font-size: 0.9rem;
 }
 
-.level.completed {
-  opacity: 0.6;
-}
-
-.level.current {
-  border: 1px solid var(--primary);
+.historico-list strong {
   font-weight: 600;
 }
 
-.level.locked {
-  opacity: 0.4;
-}
-
-/* HISTÓRICO */
-.mission-history {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.mission-history li {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.9rem;
-}
-
-/* RECOMPENSA */
-.highlight {
-  background: linear-gradient(135deg, #6c63ff, #857dff);
-  color: #fff;
-}
-
-.highlight h3,
-.highlight p,
-.highlight span {
-  color: #fff;
-}
-
-.reward-xp {
-  font-size: 0.85rem;
-  opacity: 0.85;
-}
-
-/* RESPONSIVO */
-@media (max-width: 900px) {
-  .progress-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .level-info {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
+/* ================================
+   📱 Responsivo
+================================ */
+@media (max-width: 480px) {
+  .progresso-card {
+    padding: 24px 20px;
   }
 }
