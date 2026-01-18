@@ -1,72 +1,86 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Progresso | Dashboard{% endblock %}
+{% block title %}Progresso | VentureGotchi{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/progresso.css' %}">
+{% endblock %}
+
 
 {% block content %}
-<section class="progress-container">
+<main class="progresso-page">
 
-  <!-- NÍVEL ATUAL -->
-  <div class="card progress-summary">
-    <div class="level-info">
-      <h2>Nível 5</h2>
-      <p class="xp-text">420 XP / 600 XP</p>
+  <section class="progresso-card">
+
+    <h1>Seu progresso</h1>
+    <p class="subtitle">Acompanhe sua evolução ao longo do tempo</p>
+
+    <!-- NÍVEL -->
+    <div class="bloco">
+      <h2>Nível atual</h2>
+      <p class="nivel-numero">{{ nivel }}</p>
+      <p class="nivel-nome">Explorador de Dados</p>
     </div>
 
-    <div class="xp-bar">
-      <div class="xp-bar-fill" style="width: 70%;"></div>
+    <!-- EXPERIÊNCIA -->
+    <div class="bloco">
+      <h2>Experiência</h2>
+
+      <div class="xp-bar">
+        <div
+          class="xp-bar-fill"
+          style="--progress: {{ porcentagem }}%;">
+        </div>
+      </div>
+
+      <p class="xp-info">
+        {{ xp }} / 1000 XP
+        <span>Próximo nível</span>
+      </p>
     </div>
 
-    <span class="next-level">
-      Faltam <strong>180 XP</strong> para o próximo nível
-    </span>
-  </div>
+    <!-- ESTATÍSTICAS -->
+    <div class="bloco">
+      <h2>Estatísticas</h2>
 
-  <!-- GRID DE PROGRESSO -->
-  <div class="progress-grid">
-
-    <!-- EVOLUÇÃO -->
-    <div class="card progress-card">
-      <h3>Evolução por nível</h3>
-
-      <ul class="level-list">
-        <li class="level completed">Nível 1 <span>✔</span></li>
-        <li class="level completed">Nível 2 <span>✔</span></li>
-        <li class="level completed">Nível 3 <span>✔</span></li>
-        <li class="level completed">Nível 4 <span>✔</span></li>
-        <li class="level current">Nível 5 <span>70%</span></li>
-        <li class="level locked">Nível 6 <span>🔒</span></li>
+      <ul class="stats-list">
+        <li>
+          <span>Missões concluídas</span>
+          <strong>24</strong>
+        </li>
+        <li>
+          <span>Dias ativos</span>
+          <strong>15</strong>
+        </li>
+        <li>
+          <span>Sequência atual</span>
+          <strong>5 dias 🔥</strong>
+        </li>
       </ul>
     </div>
 
     <!-- HISTÓRICO -->
-    <div class="card progress-card">
-      <h3>Histórico de missões</h3>
+    <div class="bloco">
+      <h2>Histórico recente</h2>
 
-      <ul class="mission-history">
+      <ul class="historico-list">
         <li>
-          <span>Finalizar dashboard</span>
+          <span>✓ Missão “Introdução ao Python”</span>
           <strong>+120 XP</strong>
         </li>
         <li>
-          <span>Criar card de avatar</span>
-          <strong>+80 XP</strong>
+          <span>✓ Missão “Listas e Loops”</span>
+          <strong>+90 XP</strong>
         </li>
         <li>
-          <span>Missões semanais</span>
+          <span>✓ Quiz de lógica</span>
           <strong>+60 XP</strong>
         </li>
       </ul>
     </div>
 
-    <!-- PRÓXIMA RECOMPENSA -->
-    <div class="card progress-card highlight">
-      <h3>Próxima recompensa</h3>
-      <p>🎁 Avatar raro desbloqueável</p>
-      <span class="reward-xp">Ao atingir 600 XP</span>
-    </div>
+  </section>
 
-  </div>
-
-</section>
+</main>
 {% endblock %}
