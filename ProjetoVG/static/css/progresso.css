@@ -1,0 +1,133 @@
+/* ================================
+   📄 Página
+================================ */
+.progresso-page {
+  display: flex;
+  justify-content: center;
+  padding: 48px 16px;
+  background: #2563EB;
+}
+
+/* ================================
+   🧾 Card Principal
+================================ */
+.progresso-card {
+  width: 100%;
+  max-width: 520px;
+  background: whitesmoke;
+;
+  border-radius: 16px;
+  padding: 32px 28px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  color: #0f172a;
+}
+
+/* ================================
+   🧠 Cabeçalhos
+================================ */
+.progresso-card h1 {
+  font-size: 1.9rem;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: #64748b;
+  margin-bottom: 28px;
+}
+
+.bloco {
+  margin-bottom: 28px;
+}
+
+.bloco h2 {
+  font-size: 1.15rem;
+  margin-bottom: 6px;
+}
+
+/* ================================
+   🎯 Nível
+================================ */
+.nivel-numero {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.nivel-nome {
+  font-size: 0.95rem;
+  color: #64748b;
+}
+
+/* ================================
+   📊 Barra de XP
+================================ */
+.xp-bar {
+  height: 18px;
+  width: 100%;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 8px 0 6px;
+}
+
+.xp-bar-fill {
+  height: 100%;
+  width: max(6px, var(--progress, 0%));
+  background: linear-gradient(90deg, #6c63ff, #8f8cff);
+  border-radius: 999px;
+  transition: width 0.6s ease;
+}
+
+.xp-info {
+  font-size: 0.9rem;
+  color: #475569;
+}
+
+.xp-info span {
+  margin-left: 6px;
+}
+
+/* ================================
+   📈 Estatísticas
+================================ */
+.stats-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.stats-list li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+}
+
+/* ================================
+   🕘 Histórico
+================================ */
+.historico-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.historico-list li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+}
+
+.historico-list strong {
+  font-weight: 600;
+}
+
+/* ================================
+   📱 Responsivo
+================================ */
+@media (max-width: 480px) {
+  .progresso-card {
+    padding: 24px 20px;
+  }
+}
