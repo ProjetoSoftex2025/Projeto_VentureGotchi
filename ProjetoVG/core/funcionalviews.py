@@ -2,11 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import login
-
 from .models import Progresso
 from .forms import CustomUserCreationForm
-
-from gotchi.models import Gotchi
 
 
 def home(request):
@@ -19,19 +16,29 @@ def home(request):
 
 @login_required
 def dashboard(request):
-    # Garantir que o usuário tem um Gotchi
-    gotchi, created = Gotchi.objects.get_or_create(user=request.user)
+    progresso, created = Progresso.objects.get_or_create(
+        usuario=request.user
+    )
 
-    # XP mostrado no dashboard = XP atual rumo ao próximo nível (do Gotchi)
-    xp = gotchi.xp
-    xp_next = gotchi.xp_to_next_level()
+    xp = progresso.pontos
 
-    porcentagem = int((xp / xp_next) * 100) if xp_next else 0
+    if xp < 100:
+        nivel = "Iniciante"
+        proximo = "Intermediário"
+        porcentagem = xp
+    elif xp < 300:
+        nivel = "Intermediário"
+        proximo = "Avançado"
+        porcentagem = int((xp / 300) * 100)
+    else:
+        nivel = "Avançado"
+        proximo = "Máximo"
+        porcentagem = 100
 
     context = {
         "xp": xp,
-        "nivel": gotchi.level,
-        "proximo": gotchi.level + 1,
+        "nivel": nivel,
+        "proximo": proximo,
         "porcentagem": porcentagem,
     }
 
@@ -40,18 +47,29 @@ def dashboard(request):
 
 @login_required
 def progresso(request):
-    # Mesmo padrão do dashboard, baseado no Gotchi
-    gotchi, created = Gotchi.objects.get_or_create(user=request.user)
+    progresso, created = Progresso.objects.get_or_create(
+        usuario=request.user
+    )
 
-    xp = gotchi.xp
-    xp_next = gotchi.xp_to_next_level()
-    porcentagem = int((xp / xp_next) * 100) if xp_next else 0
+    xp = progresso.pontos
+
+    if xp < 100:
+        nivel = "Iniciante"
+        proximo = "Intermediário"
+        porcentagem = xp
+    elif xp < 300:
+        nivel = "Intermediário"
+        proximo = "Avançado"
+        porcentagem = int((xp / 300) * 100)
+    else:
+        nivel = "Avançado"
+        proximo = "Máximo"
+        porcentagem = 100
 
     context = {
         "xp": xp,
-        "xp_next": xp_next,
-        "nivel": gotchi.level,
-        "proximo": gotchi.level + 1,
+        "nivel": nivel,
+        "proximo": proximo,
         "porcentagem": porcentagem,
     }
 
@@ -60,7 +78,6 @@ def progresso(request):
 
 class CustomLoginView(LoginView):
     template_name = "login.html"
-
 
 def register(request):
     if request.method == "POST":
@@ -72,4 +89,4 @@ def register(request):
     else:
         form = CustomUserCreationForm()
 
-    return render(request, "registration/register.html", {"form": form})
+    return render(request, "registration/register.html", {"form": form}) #correção de caminho

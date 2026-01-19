@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body_class %}dashboard-page{% endblock %}
+{% block title %}Perfil | VentureGotchi{% endblock %}
+
+{% block content %}
+<main class="dashboard">
+  <section class="card">
+    <h1>Perfil</h1>
+
+    <p>
+      <strong>Usuário:</strong>
+      <span class="badge badge-level">@{{ user.username }}</span>
+    </p>
+
+    <p><strong>Email:</strong> {{ user.email|default:"-" }}</p>
+
+    <div style="margin-top: 16px; display: flex; gap: 10px; flex-wrap: wrap;">
+      <a class="btn" href="{% url 'dashboard' %}">Ir para Dashboard</a>
+      <a class="btn" href="{% url 'gotchi:status' %}">Ver Gotchi</a>
+      <a class="btn" href="{% url 'missions:list' %}">Missões</a>
+      <a class="btn" href="{% url 'achievements:list' %}">Conquistas</a>
+    </div>
+  </section>
+</main>
+{% endblock %}
