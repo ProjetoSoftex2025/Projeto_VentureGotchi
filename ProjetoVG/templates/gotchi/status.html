@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body_class %}dashboard-page{% endblock %}
+{% block title %}Gotchi | VentureGotchi{% endblock %}
+
+{% block content %}
+<main class="dashboard">
+  <section class="card avatar-card">
+    <div class="avatar-header">
+      <div class="avatar-image">
+        <span class="avatar-placeholder">🤖</span>
+      </div>
+
+      <div class="avatar-info">
+        <h2>Seu Gotchi</h2>
+        <p class="level">
+          Nível: <strong>{{ gotchi.level }}</strong>
+        </p>
+        <p>
+          XP: <strong>{{ gotchi.xp }}</strong>
+        </p>
+      </div>
+    </div>
+
+    <ul class="stats">
+      <li>💻 Técnica <span>{{ gotchi.tecnica }}</span></li>
+      <li>🎨 Criatividade <span>{{ gotchi.criatividade }}</span></li>
+      <li>📈 Disciplina <span>{{ gotchi.disciplina }}</span></li>
+      <li>🤝 Liderança <span>{{ gotchi.lideranca }}</span></li>
+    </ul>
+
+    <div style="margin-top: 16px;">
+      <a class="btn" href="{% url 'dashboard' %}">Voltar ao Dashboard</a>
+    </div>
+  </section>
+</main>
+{% endblock %}

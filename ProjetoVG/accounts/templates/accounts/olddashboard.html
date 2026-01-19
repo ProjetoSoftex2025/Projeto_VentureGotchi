@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{% static 'dashboard/style.css' %}">
+    <title>Dashboard</title>
+</head>
+<body>
+     <div class="dashboard-container"></div>
+
+<h1>Dashboard</h1>
+
+<h2>{{ gotchi.name }}</h2>
+<p>Nível: {{ gotchi.level }}</p>
+<p>XP: {{ gotchi.xp }}</p>
+<p>XP: {{ gotchi.xp }} / {{ xp_needed }}</p>
+
+<div class="xp-bar-container">
+    <div
+        class="xp-bar-fill"
+        style="width: {{ xp_percent }}%;"
+    >
+        {{ xp_percent }}%
+    </div>
+</div>
+
+
+
+<h3>Missões Pendentes</h3>
+
+<ul>
+    {% for um in missions_pending %}
+        <li>
+            {{ um.mission.title }} — {{ um.mission.xp_reward }} XP
+
+            <a href="{% url 'complete_mission' um.id %}">
+                [ Concluir ]
+            </a>
+        </li>
+    {% empty %}
+        <li>Nenhuma missão pendente</li>
+    {% endfor %}
+</ul>
+
+
+
+<h3>Conquistas</h3>
+<ul>
+    {% for ua in achievements %}
+        <li>{{ ua.achievement.name }}</li>
+    {% empty %}
+        <li>Nenhuma conquista ainda.</li>
+    {% endfor %}
+</ul>
+  </div>
+</body>
+</html>

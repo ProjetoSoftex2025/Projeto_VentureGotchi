@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body_class %}dashboard-page{% endblock %}
+{% block title %}Conquistas | VentureGotchi{% endblock %}
+
+{% block content %}
+<main class="dashboard">
+  <section class="card">
+    <h2>Conquistas</h2>
+
+    {% if achievements %}
+      <ul class="mission-list">
+        {% for ua in achievements %}
+          <li class="mission completed">
+            <span class="mission-title">🏆 {{ ua.achievement.title }}</span>
+            <span class="mission-xp">+{{ ua.achievement.xp_bonus }} XP</span>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>Você ainda não desbloqueou conquistas.</p>
+    {% endif %}
+
+    <div style="margin-top: 16px;">
+      <a class="btn" href="{% url 'dashboard' %}">Voltar ao Dashboard</a>
+    </div>
+  </section>
+</main>
+{% endblock %}
