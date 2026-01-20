@@ -23,6 +23,7 @@ urlpatterns = [
 
     # Core
     path('', include('core.urls')),
+    path("dashboard/", include("core.urls", namespace="core")),
 
     # Accounts (padrão do projeto agora)
     path('accounts/', include('accounts.urls')),

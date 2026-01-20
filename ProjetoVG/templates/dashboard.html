@@ -10,6 +10,39 @@
 {% endblock %}
 
 {% block content %}
+{% if is_aluno %}
+<section>
+    <h2>Área do Aluno</h2>
+    <ul>
+        <li><a href="{% url 'avatar' %}">Acessar Avatar</a></li>
+        <li><a href="{% url 'evolucao' %}">Evolução</a></li>
+        <li><a href="{% url 'metas' %}">Metas</a></li>
+        <li><a href="{% url 'trilhas' %}">Trilhas</a></li>
+    </ul>
+</section>
+{% endif %}
+
+{% if is_professor %}
+<section>
+    <h2>Área do Professor</h2>
+    <ul>
+        <li><a href="{% url 'criar_trilhas' %}">Criar Trilhas</a></li>
+        <li><a href="{% url 'avaliar_progresso' %}">Avaliar Progresso</a></li>
+        <li><a href="{% url 'sugerir_desafios' %}">Sugerir Desafios</a></li>
+    </ul>
+</section>
+{% endif %}
+
+{% if is_equipe %}
+<section>
+    <h2>Equipe VentureGotchi</h2>
+    <ul>
+        <li><a href="#">Gerenciar Conteúdo</a></li>
+        <li><a href="#">Aprovar Trilhas</a></li>
+        <li><a href="#">Relatórios Gerais</a></li>
+    </ul>
+</section>
+{% endif %}
 <main class="dashboard">
 
   <section class="card avatar-card">

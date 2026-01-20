@@ -1,8 +1,8 @@
+from core.permissions import usuario_no_grupo
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import login
-
 from .models import Progresso
 from .forms import CustomUserCreationForm
 
@@ -33,6 +33,13 @@ def dashboard(request):
         "nivel": gotchi.level,
         "proximo": gotchi.level + 1,
         "porcentagem": porcentagem,
+        
+            # Grupos / Papéis
+        "is_aluno": usuario_no_grupo(request.user, "Alunos"),
+        "is_professor": usuario_no_grupo(request.user, "Professores"),
+        "is_equipe": usuario_no_grupo(request.user, "Equipe"),
+        "is_admin": usuario_no_grupo(request.user, "Admins"),
+        
     }
 
     return render(request, "dashboard.html", context)
