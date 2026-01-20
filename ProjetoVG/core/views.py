@@ -1,10 +1,11 @@
-from django.shortcuts import render
+
 from .forms import CustomUserCreationForm  #Importa formulário personalizado com email
-from django.shortcuts import redirect # Importa o redirecionamento quando necesario
+from django.shortcuts import render, redirect # Importa o redirecionamento quando necessário
 from django.contrib.auth.views import LoginView # Importa a view de login
 from django.contrib.auth import login # Importa a função de login
 from django.contrib.auth.decorators import login_required  # Importa o login obrigatório
 from .models import Progresso  # Importa o modelo Progresso
+from django.contrib.auth.models import User, Group# Importa o modelo Group para controle de grupos de usuários
 #from django.contrib.auth.views import LoginView
 
 class CustomLoginView(LoginView):
@@ -19,16 +20,47 @@ def home(request):
     }
     return render(request, "home.html", context)
 
+def usuario_no_grupo(user, nome_grupo): #Função para controlar grupos de usuários
+    return user.groups.filter(name=nome_grupo).exists()
 
 @login_required
 def dashboard(request):
     # Função chamando a página dashboard.html
-    return render(request, "dashboard.html")
-    
+    if not usuario_no_grupo(request.user, "Alunos"):
+        return redirect("core:home")
 
+
+    progresso, created = Progresso.objects.get_or_create(usuario=request.user)
+    
+    if created:
+            progresso.pontos = 0
+            progresso.save()
+    xp = progresso.pontos
+    
+    return render(request, "dashboard.html", {  
+        "xp": xp                               
+    })
+    
+@login_required
+def dashboard_professor(request):  
+    if not usuario_no_grupo(request.user, "Professores"):  
+        return redirect("core:home")  
+
+    return render(request, "dashboard_professor.html")
+
+@login_required
+def dashboard_equipe(request):  
+    if not usuario_no_grupo(request.user, "Equipe"):  
+        return redirect("core:home") 
+
+    return render(request, "dashboard_equipe.html")
 
 @login_required
 def progresso(request):
+    
+    if not usuario_no_grupo(request.user, "Alunos"):
+        return redirect("core:home")
+        
     progresso, created = Progresso.objects.get_or_create(
         usuario=request.user
     )  # O aluno vai começar com 0 pontos, 0 posição e nível Iniciante
@@ -80,6 +112,8 @@ def register(request):
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
+            grupo_alunos, created = Group.objects.get_or_create(name="Alunos")
+            user.groups.add(grupo_alunos) 
             login(request, user)
             return redirect("core:dashboard")
     else:
@@ -87,3 +121,23 @@ def register(request):
 
     return render(request, "registration/register.html", {"form": form})
 
+
+def promover_usuario(usuario, novo_grupo_nome):
+    # Remove o usuário de todos os grupos
+    usuario.groups.clear() # Adiciona ao novo grupo novo_grupo 
+    novo_grupo, created = Group.objects.get_or_create(name=novo_grupo_nome)
+    usuario.groups.add(novo_grupo)
+    usuario.save()
+    
+    
+@login_required
+def dashboard_redirect(request):
+    """Redireciona para o dashboard correto baseado no grupo do usuário"""
+    if usuario_no_grupo(request.user, "Alunos"):
+        return redirect("core:dashboard")  # ou 'core:dashboard' se manter o nome antigo
+    elif usuario_no_grupo(request.user, "Professores"):
+        return redirect("core:dashboard_professor")
+    elif usuario_no_grupo(request.user, "Equipe"):
+        return redirect("core:dashboard_equipe")
+    else:
+        return redirect("core:home")  # caso não esteja em nenhum grupo

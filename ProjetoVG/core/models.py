@@ -21,3 +21,11 @@ class UserProgress(models.Model):
     next_level = models.IntegerField(default=100) 
     def __str__(self): 
         return f"{self.user.username} - Nível {self.level}"
+    
+class Profile(models.Model): #Classe para armazenar informações adicionais do usuário
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    avatar = models.CharField(max_length=100, default="default")
+    bio = models.TextField(blank=True)
+
+    def __str__(self):
+        return self.user.username

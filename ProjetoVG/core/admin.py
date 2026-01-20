@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import Progresso, UserProgress, Profile
 
-# Register your models here.
+admin.site.register(Progresso) 
+admin.site.register(UserProgress) 
+admin.site.register(Profile)

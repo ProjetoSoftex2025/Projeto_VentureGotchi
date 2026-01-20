@@ -2,6 +2,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver 
 from django.contrib.auth.models import User 
 from .models import Progresso, UserProgress
+from .models import Profile
 # Signal responsável por criar automaticamente o Progresso sempre que um novo usuário é criado no sistema.
 # Evita erros e garante consistência dos dados.
 
@@ -16,3 +17,7 @@ def criar_progresso_usuario(sender, instance, created, **kwargs):
         if progresso and hasattr(progresso, "atualizar_nivel_e_meta"):
             progresso.atualizar_nivel_e_meta()
             
+@receiver(post_save, sender=User)
+def create_profile(sender, instance, created, **kwargs): #Cria um registro chamado Profile(Perfil) para cada novo usuário
+    if created:
+        Profile.objects.create(user=instance)
