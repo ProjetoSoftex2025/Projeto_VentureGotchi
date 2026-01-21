@@ -74,3 +74,15 @@ def register(request):
 
     return render(request, "registration/register.html", {"form": form})
 
+def professor_dashboard(request):
+    return render(request, "professor/dashboard.html")
+
+def equipe(request):
+    return render(request, "equipe/equipe.html")
+
+def conquistas(request):
+    return render(request, "conquistas/conquistas.html")
+
+
+def tarefas(request):
+    return render(request, "tarefas/tarefas.html")

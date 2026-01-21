@@ -10,5 +10,10 @@ urlpatterns = [
     path("register/", views.register, name="register"),
     path("login/", views.CustomLoginView.as_view(), name="login"),
     path('missions/', include('missions.urls')),
+    path("professor/", views.professor_dashboard, name="professor"),
+    path("equipe/", views.equipe, name="equipe"),
+    path("conquistas/", views.conquistas, name="conquistas"),
+    path("tarefas/", views.tarefas, name="tarefas"),
+
 ]
 

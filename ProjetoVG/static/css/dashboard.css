@@ -238,3 +238,13 @@
     transform: translateY(0);
   }
 }
+
+/* Missões concluídas */
+.mission.completed {
+    opacity: 0.6;
+}
+
+.mission.completed .mission-title {
+    text-decoration: line-through;
+}
+
