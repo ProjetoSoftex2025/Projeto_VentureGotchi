@@ -1,0 +1,30 @@
+.tarefas-page {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.subtitle {
+    color: #666;
+    margin-bottom: 24px;
+}
+
+.task-list {
+    list-style: none;
+    padding: 0;
+}
+
+.task {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.task.completed {
+    opacity: 0.6;
+    text-decoration: line-through;
+}
+
+.xp {
+    font-weight: bold;
+}
