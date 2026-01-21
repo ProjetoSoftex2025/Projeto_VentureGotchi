@@ -37,7 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Apps do projeto
+    'accounts.apps.AccountsConfig',
     'core.apps.CoreConfig',
+    'gotchi.apps.GotchiConfig',
+    'missions.apps.MissionsConfig',
+    'achievements.apps.AchievementsConfig',
 ]
 
 MIDDLEWARE = [
@@ -126,8 +132,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # Autenticação (Auth)
+AUTH_USER_MODEL = "accounts.User"
+
 LOGIN_URL = '/accounts/login/'
-LOGOUT_REDIRECT_URL = '/login/'
 LOGIN_REDIRECT_URL = '/dashboard/'
 LOGOUT_REDIRECT_URL = '/'
 

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Login | VentureGotchi{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="login-card">
+  <h1>Login</h1>
+
+  {% if form.errors %}
+    <p class="errorlist">Usuário ou senha incorretos.</p>
+  {% endif %}
+
+  <form method="post">
+    {% csrf_token %}
+
+    <div class="form-group">
+      {{ form.username.label_tag }}
+      {{ form.username }}
+    </div>
+
+    <div class="form-group">
+      {{ form.password.label_tag }}
+      {{ form.password }}
+    </div>
+
+    <button type="submit" class="btn">Entrar</button>
+
+    <a href="{% url 'password_reset' %}">
+      Perdeu a senha ou esqueceu seu login?
+    </a>
+
+    <p class="register-link">
+      Não tem conta?
+      <a href="{% url 'register' %}">Crie sua conta agora aventureiro!</a>
+    </p>
+  </form>
+</div>
+{% endblock %}

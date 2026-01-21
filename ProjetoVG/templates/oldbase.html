@@ -16,15 +16,20 @@
 
     <!-- CSS específico da página -->
     {% block extra_css %}{% endblock %}
+
+   
   </head>
 
   <body class="{% block body_class %}{% endblock %}">
+
     <!-- Topbar global -->
     <header class="topbar">
       <h1>VentureGotchi</h1>
 
       {% if user.is_authenticated %}
-      <div class="user-level">@{{ request.user.username }}</div>
+      <div class="user-level">
+        Lv {{ request.user.profile.level|default:"1" }}
+      </div>
       <form method="post" action="{% url 'logout' %}" style="display: inline">
         {% csrf_token %}
         <button type="submit">Sair</button>
@@ -33,7 +38,7 @@
     </header>
 
     <!-- Conteúdo das páginas -->
-    <main>{% block content %}{% endblock %}</main>
+    <main>{% block content %} {% endblock %}</main>
 
     <!-- JS -->
     <script src="{% static 'js/main.js' %}"></script>

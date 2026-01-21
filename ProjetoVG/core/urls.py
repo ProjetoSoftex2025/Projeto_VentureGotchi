@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
 
 app_name = "core"
@@ -9,4 +9,6 @@ urlpatterns = [
     path("progresso/", views.progresso, name="progresso"),
     path("register/", views.register, name="register"),
     path("login/", views.CustomLoginView.as_view(), name="login"),
+    path('missions/', include('missions.urls')),
 ]
+

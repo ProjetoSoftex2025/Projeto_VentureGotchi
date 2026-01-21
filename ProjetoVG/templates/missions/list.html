@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body_class %}dashboard-page{% endblock %}
+{% block title %}Missões | VentureGotchi{% endblock %}
+
+{% block content %}
+<main class="dashboard">
+  <section class="card missions">
+    <h2>Missões</h2>
+
+    {% if missions %}
+      <ul class="mission-list">
+        {% for mission in missions %}
+          <li class="mission">
+            <span class="mission-title">📌 {{ mission.title }}</span>
+            <span class="mission-xp">+{{ mission.xp_reward }} XP</span>
+
+            <div style="margin-top: 10px;">
+              <a class="btn" href="{% url 'missions:complete' mission.id %}">
+                Concluir
+              </a>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>Nenhuma missão cadastrada.</p>
+    {% endif %}
+
+    <div style="margin-top: 16px;">
+      <a class="btn" href="{% url 'core:dashboard' %}">Voltar ao Dashboard</a>
+    </div>
+  </section>
+</main>
+{% endblock %}
+
