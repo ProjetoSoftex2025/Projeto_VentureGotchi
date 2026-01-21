@@ -1,3 +1,10 @@
+
+# missions/views.py
+from django.shortcuts import render
+
+def missions_list(request):
+    return render(request, "missions/list.html")
+
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
 

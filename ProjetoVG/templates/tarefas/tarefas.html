@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Tarefas | VentureGotchi{% endblock %}
+{% block body_class %}dashboard-page{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/tarefas.css' %}">
+{% endblock %}
+
+{% block content %}
+<main class="tarefas-page">
+
+  <a href="{% url 'core:dashboard' %}" class="btn back-dashboard">
+    ← Voltar ao Dashboard
+  </a>
+
+  <h1>📝 Tarefas Diárias</h1>
+  <p class="subtitle">Pequenas ações que mantêm sua evolução constante</p>
+
+  <section class="card">
+    <ul class="task-list">
+      <li class="task completed">
+        <span>✔ Estudar 30 minutos</span>
+        <span class="xp">+10 XP</span>
+      </li>
+
+      <li class="task">
+        <span>📘 Revisar anotações</span>
+        <span class="xp">+5 XP</span>
+      </li>
+
+      <li class="task">
+        <span>🧠 Resolver 1 exercício</span>
+        <span class="xp">+15 XP</span>
+      </li>
+    </ul>
+  </section>
+
+</main>
+{% endblock %}

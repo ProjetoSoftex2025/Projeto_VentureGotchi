@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Professor | VentureGotchi{% endblock %}
+{% block body_class %}professor-page{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/professor.css' %}">
+{% endblock %}
+
+{% block content %}
+<main class="professor-dashboard">
+
+  <a href="{% url 'core:dashboard' %}" class="btn back-dashboard">
+    ← Voltar ao Dashboard
+  </a>
+
+  <h1>Painel do Professor</h1>
+  <p class="subtitle">Gerencie tarefas e acompanhe seus alunos</p>
+
+  <section class="card">
+    <h2>📋 Tarefas</h2>
+
+    <ul class="task-list">
+      <li>
+        <span>Criar dashboard no Django</span>
+        <span class="badge active">Ativa</span>
+      </li>
+      <li>
+        <span>Finalizar página de progresso</span>
+        <span class="badge done">Concluída</span>
+      </li>
+    </ul>
+
+    <button class="btn btn-primary">
+      ➕ Criar tarefa
+    </button>
+  </section>
+
+  <section class="card">
+    <h2>👥 Alunos</h2>
+
+    <ul class="student-list">
+      <li>
+        <span>@joao</span>
+        <span>Nível 4 • 320 XP</span>
+      </li>
+      <li>
+        <span>@maria</span>
+        <span>Nível 6 • 540 XP</span>
+      </li>
+      <li>
+        <span>@ana</span>
+        <span>Nível 3 • 210 XP</span>
+      </li>
+    </ul>
+  </section>
+
+</main>
+{% endblock %}

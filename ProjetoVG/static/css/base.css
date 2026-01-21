@@ -130,3 +130,22 @@ main {
   width: 100%;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
+
+/* ================================
+   🔙 Botão Voltar (link-style)
+================================ */
+.btn.back-dashboard {
+  background: transparent;
+  color: var(--color-primary);
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.btn.back-dashboard:hover {
+  background: transparent;
+  color: #1e40af; /* azul mais escuro */
+  box-shadow: none;
+  transform: none;
+  text-decoration: underline;
+}

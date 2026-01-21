@@ -1,0 +1,35 @@
+.conquistas-page {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.subtitle {
+    color: #666;
+    margin-bottom: 24px;
+}
+
+.badge-list {
+    list-style: none;
+    padding: 0;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+}
+
+.badge {
+    padding: 16px;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.badge.unlocked {
+    background: #eef1ff;
+    color: #2563eb;
+}
+
+.badge.locked {
+    background: #f1f1f1;
+    color: #aaa;
+}
