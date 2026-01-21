@@ -24,6 +24,7 @@ urlpatterns = [
       # CORE COM NAMESPACE
     path('', include(('core.urls', 'core'), namespace='core')),
     path('accounts/', include('django.contrib.auth.urls')),
+    path("missions/", include("missions.urls")),
 
         # Login e Logout da views
     path('login/', auth_views.LoginView.as_view(), name='login'),
