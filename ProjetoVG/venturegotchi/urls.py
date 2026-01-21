@@ -22,7 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # Core
-    path('', include('core.urls')),
+    path('', include(("core.urls", "core"), namespace="core")),
 
     # Accounts (padrão do projeto agora)
     path('accounts/', include('accounts.urls')),

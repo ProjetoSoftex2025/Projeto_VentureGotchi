@@ -1,30 +1,43 @@
 from django.test import TestCase
 from django.contrib.auth import get_user_model
-
-from .models import Mission
-from .services.mission_service import complete_mission
-
+from .models import Mission, MissionProgress
 from gotchi.models import Gotchi
 
-class MissionFlowTest(TestCase):
-    def test_complete_mission_gives_xp(self):
-        User = get_user_model()
-        user = User.objects.create_user(
-            username="tester",
-            password="123"
+User = get_user_model()
+
+
+class MissionTests(TestCase):
+
+    def setUp(self):
+        self.user = User.objects.create_user(
+            username="mission_user",
+            password="12345678"
         )
+        self.gotchi = Gotchi.objects.get(user=self.user)
 
-        # 🔥 CRIA GOTCHI EXPLICITAMENTE
-        Gotchi.objects.create(user=user, xp=0, level=1)
-
-        mission = Mission.objects.create(
+        self.mission = Mission.objects.create(
             title="Missão Teste",
-            xp_reward=100
+            xp_reward=50,
+            tecnica_pontuacao=2,
+            lideranca_pontuacao=1,
+            criatividade_pontuacao=1,
+            disciplina_pontuacao=2
         )
 
-        old_xp = user.gotchi.xp
+    def test_complete_mission_gives_xp(self):
+        progress = MissionProgress.objects.create(
+            mission=self.mission,
+            gotchi=self.gotchi,
+            completed=True
+        )
 
-        complete_mission(user, mission)
+        self.gotchi.refresh_from_db()
 
-        user.refresh_from_db()
-        self.assertGreater(user.gotchi.xp, old_xp)
+        self.assertGreaterEqual(self.gotchi.xp, 50)
+
+    def test_mission_progress_created(self):
+        progress = MissionProgress.objects.create(
+            mission=self.mission,
+            gotchi=self.gotchi
+        )
+        self.assertFalse(progress.completed)
