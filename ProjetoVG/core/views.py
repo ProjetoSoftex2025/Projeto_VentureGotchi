@@ -3,10 +3,32 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import login
 
-from .models import Progresso
 from .forms import CustomUserCreationForm
-
 from gotchi.models import Gotchi
+from django.contrib.auth.decorators import login_required, permission_required
+from missions.models import Mission, MissionProgress
+from django.db.models import Count, Q
+
+@login_required
+@permission_required("missions.view_mission", raise_exception=True)
+def professor_dashboard(request):
+    missions = (
+        Mission.objects
+        .filter(professor=request.user)
+        .annotate(
+            completed_count=Count(
+                "missionprogress",
+                filter=Q(missionprogress__completed=True)
+            )
+        )
+    )
+
+    return render(
+        request,
+        "professor/dashboard.html",
+        {"missions": missions}
+    )
+
 
 
 def home(request):
@@ -19,20 +41,20 @@ def home(request):
 
 @login_required
 def dashboard(request):
-    # Garantir que o usuário tem um Gotchi
     gotchi, created = Gotchi.objects.get_or_create(user=request.user)
 
-    # XP mostrado no dashboard = XP atual rumo ao próximo nível (do Gotchi)
     xp = gotchi.xp
     xp_next = gotchi.xp_to_next_level()
-
     porcentagem = int((xp / xp_next) * 100) if xp_next else 0
 
     context = {
-        "xp": xp,
         "nivel": gotchi.level,
+        "xp": xp,
         "proximo": gotchi.level + 1,
         "porcentagem": porcentagem,
+
+        # 👇 stats sincronizados com o banco
+        **gotchi.stats_dict(),
     }
 
     return render(request, "dashboard.html", context)
@@ -40,7 +62,6 @@ def dashboard(request):
 
 @login_required
 def progresso(request):
-    # Mesmo padrão do dashboard, baseado no Gotchi
     gotchi, created = Gotchi.objects.get_or_create(user=request.user)
 
     xp = gotchi.xp
@@ -53,6 +74,7 @@ def progresso(request):
         "nivel": gotchi.level,
         "proximo": gotchi.level + 1,
         "porcentagem": porcentagem,
+        **gotchi.stats_dict(),
     }
 
     return render(request, "progresso.html", context)
@@ -74,15 +96,16 @@ def register(request):
 
     return render(request, "registration/register.html", {"form": form})
 
-def professor_dashboard(request):
-    return render(request, "professor/dashboard.html")
-
+@login_required
 def equipe(request):
     return render(request, "equipe/equipe.html")
 
+
+@login_required
 def conquistas(request):
     return render(request, "conquistas/conquistas.html")
 
 
+@login_required
 def tarefas(request):
     return render(request, "tarefas/tarefas.html")
