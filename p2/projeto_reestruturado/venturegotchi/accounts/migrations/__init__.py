@@ -1,1 +1,0 @@
-# Necessário para o Django reconhecer as migrações do app
