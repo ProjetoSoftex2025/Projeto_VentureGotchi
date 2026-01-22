@@ -27,11 +27,12 @@
     </div>
 
     <ul class="stats">
-      <li>💻 Técnica <span>12</span></li>
-      <li>🎨 Criatividade <span>8</span></li>
-      <li>📈 Disciplina <span>10</span></li>
-      <li>🤝 Liderança <span>6</span></li>
-    </ul>
+  <li>💻 <b>Técnica</b> <span>{{ tecnica }}</span></li>
+  <li>🎨 <b>Criatividade</b> <span>{{ criatividade }}</span></li>
+  <li>📈 <b>Disciplina</b> <span>{{ disciplina }}</span></li>
+  <li>🤝 <b>Liderança</b> <span>{{ lideranca }}</span></li>
+</ul>
+
   </section>
 
   <section class="card">
@@ -40,7 +41,7 @@
     <p>
       <strong>Aventureiro Gotchi:</strong>
       <span class="badge badge-level">
-        @{{ request.user.username }}
+        {{ request.user.username }}
       </span>
     </p>
 
@@ -60,6 +61,7 @@
       Ver detalhes do progresso
     </a>
 
+
     <div class="xp-bar">
       <div class="xp-progress animate" style="width: {{ porcentagem|default:0 }}%;"></div>
     </div>
@@ -67,6 +69,18 @@
     <p>
       <strong>Próximo nível:</strong> {{ proximo }}
     </p>
+    <br>
+
+    <div class="dashboard-actions">
+      <a href="{% url 'core:professor' %}" class="dashboard-btn">
+        Professor
+      </a>
+
+      <a href="{% url 'core:equipe' %}" class="dashboard-btn">
+        Equipe
+      </a>
+    </div>
+
   </section>
 
   <section class="card missions">
@@ -95,6 +109,8 @@
       </li>
     </ul>
   </section>
+
+
 
 </main>
 {% endblock %}
