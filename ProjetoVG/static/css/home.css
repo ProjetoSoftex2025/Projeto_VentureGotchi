@@ -1,0 +1,57 @@
+.home-center {
+  min-height: calc(100vh - 64px); /* respeita a topbar */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  padding: 24px;
+}
+
+.home-box {
+  background: #ffffff;
+  padding: 40px 36px;
+  border-radius: 16px;
+  max-width: 640px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+}
+
+.home-box h1 {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.home-box h1 span {
+  color: #2563eb;
+}
+
+.subtitle {
+  font-size: 1.05rem;
+  color: #475569;
+  margin-bottom: 24px;
+}
+
+.objective-list {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0;
+}
+
+.objective-list li {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: #1e293b;
+}
+
+.highlight {
+  font-weight: 600;
+  color: #2563eb;
+  margin-bottom: 28px;
+}
+
+.home-box .btn {
+  padding: 12px 24px;
+  font-size: 1rem;
+  border-radius: 10px;
+}
