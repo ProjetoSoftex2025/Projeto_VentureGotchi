@@ -11,13 +11,14 @@
 
 {% block content %}
 
-<a href="{% url 'core:dashboard' %}" class="btn back-dashboard">
-    ← Voltar ao Dashboard
-  </a>
+<div style="margin-top: 16px;">
+  <a class="btn" href="{% url 'core:dashboard' %}">Voltar ao Dashboard</a>
+</div>
+
 
 <main class="progresso-page">
 
-  
+
 
   <section class="progresso-card">
 
@@ -38,9 +39,7 @@
       <h2>Experiência</h2>
 
       <div class="xp-bar">
-        <div
-          class="xp-bar-fill"
-          style="--progress: {{ porcentagem }}%;">
+        <div class="xp-bar-fill" style="--progress: {{ porcentagem }}%;">
         </div>
       </div>
 
