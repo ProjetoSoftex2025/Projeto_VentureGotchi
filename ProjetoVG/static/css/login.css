@@ -7,6 +7,8 @@
   width: 100%;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   animation: fadeIn 0.8s ease;
+  margin: 0 auto; 
+  display: block;
 }
 
 /* Título */
@@ -19,8 +21,8 @@
 /* Texto auxiliar */
 .login-card p {
   text-align: center;
-  margin-bottom: 20px;
-  font-size: 15px;
+  margin-bottom: 25px;
+  font-size: 20px;
 }
 
 /* Grupo de campos */
