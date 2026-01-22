@@ -1,17 +1,27 @@
 from django.conf import settings
 from django.db import models
-
-from gotchi.services.xp_service import add_xp
-
-
+from django.conf import settings
+from django.db import models
 class Mission(models.Model):
-    """
-    Modelo base de missões e metas.
+    professor = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="missions_criadas"
+    )
 
-    Usado para:
-    - Missões diárias
-    - Metas semanais / mensais
-    """
+    title = models.CharField(max_length=100)
+    description = models.TextField(blank=True)
+
+    xp_reward = models.PositiveIntegerField(default=50)
+
+    tecnica_pontuacao = models.PositiveIntegerField(default=0)
+    lideranca_pontuacao = models.PositiveIntegerField(default=0)
+    criatividade_pontuacao = models.PositiveIntegerField(default=0)
+    disciplina_pontuacao = models.PositiveIntegerField(default=0)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return self.title
 
     DAILY = "daily"
     WEEKLY = "weekly"
@@ -47,12 +57,7 @@ class Mission(models.Model):
 
 
 class MissionProgress(models.Model):
-    """
-    Registra o progresso do usuário em uma missão.
-    Mantém histórico e evita missões repetidas infinitamente.
-    """
-
-    # ✅ Preservado do zip, mas agora opcional para permitir create() via gotchi no teste
+   
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
@@ -95,15 +100,17 @@ class MissionProgress(models.Model):
         super().save(*args, **kwargs)
 
         # Se completou agora, aplica recompensas no gotchi
+        # Se completou agora, aplica recompensas no gotchi
         if self.completed and not was_completed and self.gotchi:
-            add_xp(self.gotchi, self.mission.xp_reward)
+            # XP (usa lógica centralizada do Gotchi)
+            self.gotchi.add_xp(self.mission.xp_reward)
 
-            # Pontos de atributos
-            self.gotchi.tecnica += self.mission.tecnica_pontuacao
-            self.gotchi.lideranca += self.mission.lideranca_pontuacao
-            self.gotchi.criatividade += self.mission.criatividade_pontuacao
-            self.gotchi.disciplina += self.mission.disciplina_pontuacao
-            self.gotchi.save(update_fields=["tecnica", "lideranca", "criatividade", "disciplina"])
+            # Stats (também centralizados no Gotchi)
+            self.gotchi.add_stat("tecnica", self.mission.tecnica_pontuacao)
+            self.gotchi.add_stat("lideranca", self.mission.lideranca_pontuacao)
+            self.gotchi.add_stat("criatividade", self.mission.criatividade_pontuacao)
+            self.gotchi.add_stat("disciplina", self.mission.disciplina_pontuacao)
+
 
     def __str__(self):
         # Mantém padrão original de string, preferindo user se existir
