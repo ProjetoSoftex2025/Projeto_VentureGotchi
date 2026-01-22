@@ -5,6 +5,18 @@
   display: flex;
   justify-content: center;
   padding: 48px 16px;
+  background-color: white;  /* Fundo branco */
+}
+
+/* Fundo branco em TODA a página */
+.progresso-page-bg {
+  background-color: #ffffff !important;
+  min-height: 100vh;
+}
+
+/* Header (topbar) azul na página de progresso */
+.progresso-page-bg .topbar {
+  background-color: #007bff; /* mesma cor do card */
 }
 
 
@@ -14,12 +26,11 @@
 .progresso-card {
   width: 100%;
   max-width: 520px;
-  background: whitesmoke;
-;
+  background: #007bff;  /* Card azul (tom médio de azul) */
   border-radius: 16px;
   padding: 32px 28px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-  color: #0f172a;
+  color: #ffffff;  /* Texto branco para contraste no card azul */
 }
 
 /* ================================
@@ -32,7 +43,7 @@
 
 .subtitle {
   font-size: 0.95rem;
-  color: #64748b;
+  color: #e0e7ff;  /* Cor mais clara para subtítulo no fundo azul */
   margin-bottom: 28px;
 }
 
@@ -55,7 +66,7 @@
 
 .nivel-nome {
   font-size: 0.95rem;
-  color: #64748b;
+  color: #e0e7ff;  /* Cor mais clara para nome do nível */
 }
 
 /* ================================
@@ -64,7 +75,7 @@
 .xp-bar {
   height: 18px;
   width: 100%;
-  background: #e5e7eb;
+  background: #ffffff;  /* Fundo branco para a barra */
   border-radius: 999px;
   overflow: hidden;
   margin: 8px 0 6px;
@@ -73,14 +84,14 @@
 .xp-bar-fill {
   height: 100%;
   width: max(6px, var(--progress, 0%));
-  background: linear-gradient(90deg, #6c63ff, #8f8cff);
+  background: linear-gradient(90deg, #6c63ff, #8f8cff);  /* Mantive o gradiente, mas pode ajustar se quiser */
   border-radius: 999px;
   transition: width 0.6s ease;
 }
 
 .xp-info {
   font-size: 0.9rem;
-  color: #475569;
+  color: #ffffff;  /* Branco para info no card azul */
 }
 
 .xp-info span {
@@ -101,6 +112,7 @@
   justify-content: space-between;
   margin-bottom: 6px;
   font-size: 0.95rem;
+  color: #ffffff;  /* Branco para itens da lista */
 }
 
 /* ================================
@@ -117,6 +129,7 @@
   justify-content: space-between;
   margin-bottom: 6px;
   font-size: 0.9rem;
+  color: #ffffff;  /* Branco para itens da lista */
 }
 
 .historico-list strong {
@@ -131,10 +144,3 @@
     padding: 24px 20px;
   }
 }
-
-
-
-
-
-
-
