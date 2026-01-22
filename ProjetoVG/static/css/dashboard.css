@@ -248,3 +248,27 @@
     text-decoration: line-through;
 }
 
+/* Container dos botões do dashboard */
+.dashboard-actions {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+/* Botões do dashboard */
+.dashboard-btn {
+  display: inline-block;
+  background-color: #6C3BFF; /* roxo */
+  color: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.dashboard-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+

@@ -1,7 +1,60 @@
+/* ===== NAVBAR ===== */
+.navbar {
+    width: 100%;
+    height: 64px;
+    background-color: #2563eb;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+/* Esquerda */
+.navbar-left .logo {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Centro */
+.navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.navbar-center .user {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 14px;
+}
+
+/* Direita */
+.navbar-right .logout {
+    background-color: white;
+    color: black;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.navbar-right .logout:hover {
+    background-color: #e5e7eb;
+}
+
 .equipe-page {
     max-width: 900px;
     margin: 0 auto;
     padding: 24px;
+}
+
+.equipe-body {
+    margin: 0;
 }
 
 .subtitle {

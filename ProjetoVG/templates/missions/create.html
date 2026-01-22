@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Criar Missão | VentureGotchi{% endblock %}
+{% block body_class %}professor-page{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/professor.css' %}">
+{% endblock %}
+
+{% block content %}
+<div style="margin-top: 16px;">
+  <a class="btn" href="{% url 'core:professor' %}">
+    ← Voltar ao Painel do Professor
+  </a>
+</div>
+
+<main class="professor-dashboard">
+
+  <h1>Criar nova missão</h1>
+  <p class="subtitle">Defina a tarefa que os alunos deverão concluir</p>
+
+  <section class="card">
+
+    <form method="post">
+      {% csrf_token %}
+
+      {{ form.non_field_errors }}
+
+      <div style="margin-bottom: 12px;">
+        {{ form.title.label_tag }}
+        {{ form.title }}
+      </div>
+
+      <div style="margin-bottom: 12px;">
+        {{ form.description.label_tag }}
+        {{ form.description }}
+      </div>
+
+      <div style="margin-bottom: 12px;">
+        {{ form.xp_reward.label_tag }}
+        {{ form.xp_reward }}
+      </div>
+
+      <h3>Impacto nos atributos</h3>
+
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
+        <div>
+          {{ form.tecnica_pontuacao.label_tag }}
+          {{ form.tecnica_pontuacao }}
+        </div>
+        <div>
+          {{ form.disciplina_pontuacao.label_tag }}
+          {{ form.disciplina_pontuacao }}
+        </div>
+        <div>
+          {{ form.criatividade_pontuacao.label_tag }}
+          {{ form.criatividade_pontuacao }}
+        </div>
+        <div>
+          {{ form.lideranca_pontuacao.label_tag }}
+          {{ form.lideranca_pontuacao }}
+        </div>
+      </div>
+
+      <div style="margin-top: 20px;">
+        <button type="submit" class="btn btn-primary">
+          💾 Criar missão
+        </button>
+      </div>
+
+    </form>
+
+  </section>
+
+</main>
+{% endblock %}

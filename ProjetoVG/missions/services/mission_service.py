@@ -28,3 +28,17 @@ def complete_mission(user, mission) -> None:
     gotchi, _ = Gotchi.objects.get_or_create(user=user)
 
     add_xp(gotchi, mission.xp_reward)
+
+from gotchi.models import Gotchi
+
+
+def complete_mission(user, mission):
+    gotchi = user.gotchi
+
+    gotchi.add_xp(mission.xp_reward)
+
+    if mission.tecnica_reward:
+        gotchi.add_stat("tecnica", mission.tecnica_reward)
+
+    if mission.disciplina_reward:
+        gotchi.add_stat("disciplina", mission.disciplina_reward)

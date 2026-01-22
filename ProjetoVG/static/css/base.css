@@ -149,3 +149,8 @@ main {
   transform: none;
   text-decoration: underline;
 }
+
+/* Topbar roxa igual ao botão (somente no Progresso) */
+body.progresso-page-bg .topbar {
+  background-color: #6C3BFF;
+}
