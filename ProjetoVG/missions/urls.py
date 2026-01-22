@@ -1,14 +1,11 @@
-
-# missions/urls.py
 from django.urls import path
 from . import views
-from django.urls import path
-from .views import mission_list_view, complete_mission_view
 
 app_name = "missions"
 
 urlpatterns = [
-    path("", views.missions_list, name="list"),
-    path("", mission_list_view, name="list"),
-    path("complete/<int:mission_id>/", complete_mission_view, name="complete"),
+    path("", views.mission_list_view, name="list"),
+    path("<int:mission_id>/complete/", views.complete_mission_view, name="complete"),
+    path("create/", views.create_mission_view, name="create"),
+    path("detail/<int:mission_id>/", views.mission_detail_view, name="detail"),
 ]
