@@ -67,3 +67,14 @@ class Gotchi(models.Model):
 
     def __str__(self):
         return f"Gotchi de {self.user}"
+
+def avatar_image(self) -> str:
+    """
+    Retorna o caminho do avatar conforme o nível do Gotchi.
+    """
+    if self.level <= 2:
+        return "avatars/Gotchi_Iniciante.png"
+    elif self.level <= 10:
+        return "avatars/Gotchi_Intermediario.png"
+    else:
+        return "avatars/Gotchi_Avancado.png"
