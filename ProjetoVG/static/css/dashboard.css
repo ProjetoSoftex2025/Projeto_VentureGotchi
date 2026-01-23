@@ -127,8 +127,8 @@
 }
 
 .avatar-image {
-  width: 64px;
-  height: 64px;
+  width: 200px;
+  height: 180px;
   background: var(--bg-secondary);
   border-radius: var(--radius-md);
   display: flex;
@@ -136,6 +136,18 @@
   justify-content: center;
 }
 
+.avatar-image img {
+  width: 100%;
+  height: auto;
+}
+
+.gotchi-avatar {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  max-height: 100%;
+  display: block;
+}
 .avatar-placeholder {
   font-size: 2rem;
 }
