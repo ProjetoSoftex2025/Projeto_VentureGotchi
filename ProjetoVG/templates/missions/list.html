@@ -21,6 +21,9 @@
           <span style="color: green; font-weight: bold;">
             ✔ Concluída
           </span>
+          <a class="btn" href="{% url 'missions:uncomplete' mission.id %}" style="margin-left: 10px;">
+            Desmarcar
+          </a>
           {% else %}
           <a class="btn" href="{% url 'missions:complete' mission.id %}">
             Concluir

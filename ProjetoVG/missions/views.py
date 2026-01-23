@@ -48,6 +48,28 @@ def complete_mission_view(request, mission_id):
 
     return redirect("missions:list")
 
+
+@login_required
+def uncomplete_mission_view(request, mission_id):
+    mission = get_object_or_404(Mission, id=mission_id)
+
+    # Obtém o progresso da missão para o usuário
+    progress = get_object_or_404(
+        MissionProgress,
+        user=request.user,
+        gotchi=request.user.gotchi,
+        mission=mission,
+        completed=True  # Garante que só desmarque se estiver concluída
+    )
+
+    # Desmarca como concluída
+    progress.completed = False
+    progress.completed_at = None  # Opcional: limpa a data de conclusão
+    progress.save()
+
+    return redirect("missions:list")
+
+
 @login_required
 @permission_required("missions.add_mission", raise_exception=True)
 def create_mission_view(request):
@@ -62,6 +84,7 @@ def create_mission_view(request):
         form = MissionForm()
 
     return render(request, "missions/create.html", {"form": form})
+
 
 @login_required
 @permission_required("missions.view_missionprogress", raise_exception=True)
@@ -81,4 +104,3 @@ def mission_detail_view(request, mission_id):
             "progresses": progresses
         }
     )
-
