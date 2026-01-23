@@ -34,6 +34,7 @@ def dashboard(request):
     porcentagem = int((xp / xp_next) * 100) if xp_next else 0
 
     context = {
+        "gotchi": gotchi,
         "nivel": gotchi.level,
         "xp": xp,
         "proximo": gotchi.level + 1,
