@@ -1,14 +1,15 @@
-{% extends "base.html" %} 
-{% load static %} 
+{% extends "base.html" %}
+{% load static %}
 
-{% block body_class%} dashboard-page{% endblock %}
+{% block body_class %}dashboard-page{% endblock %}
+{% block title %}Dashboard | VentureGotchi{% endblock %}
 
-{% block title %}Dashboard | VentureGotchi{% endblock %} 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
-{% endblock %} 
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock %}
+
 {% block content %}
-<main class="dashboard">
+<div class="dashboard">
 
   <section class="card avatar-card">
     <div class="avatar-header">
@@ -41,15 +42,14 @@
 
     <p>
       <strong>Aventureiro Gotchi:</strong>
-      <span class="badge badge-level"> {{ request.user.username }} </span>
+      <span class="badge badge-level">{{ request.user.username }}</span>
     </p>
 
     <p><strong>Nível atual:</strong> {{ nivel }}</p>
     <p><strong>XP atual:</strong> {{ xp }}</p>
 
     <p>
-      🎉 Parabéns por chegar até aqui. Continue realizando atividades para subir
-      de nível.
+      🎉 Parabéns por chegar até aqui. Continue realizando atividades para subir de nível.
     </p>
   </section>
 
@@ -61,7 +61,6 @@
     </a>
 
     <div class="xp-bar">
-      
       <div
         class="xp-progress animate"
         style="width: {{ porcentagem|default:0 }}%;"
@@ -69,21 +68,17 @@
     </div>
 
     <p><strong>Próximo nível:</strong> {{ proximo }}</p>
-    <br />
 
     <div class="dashboard-actions">
-      <a href="{% url 'core:professor' %}" class="dashboard-btn"> Professor </a>
-
-      <a href="{% url 'core:equipe' %}" class="dashboard-btn"> Equipe </a>
+      <a href="{% url 'core:professor' %}" class="dashboard-btn">Professor</a>
+      <a href="{% url 'core:equipe' %}" class="dashboard-btn">Equipe</a>
     </div>
   </section>
 
   <section class="card missions">
     <h2>Missões do Dia</h2>
 
-    <a href="{% url 'missions:list' %}" class="btn btn-primary">
-      🎯 Ver todas as missões
-    </a>
+    <a href="{% url 'missions:list' %}" class="btn btn-primary">🎯 Ver todas as missões</a>
     <a href="{% url 'core:conquistas' %}" class="btn">🏆 Conquistas</a>
     <a href="{% url 'core:tarefas' %}" class="btn">📝 Tarefas</a>
 
@@ -92,17 +87,16 @@
         <span class="mission-title">📘 Estudar Django Templates</span>
         <span class="mission-xp">+20 XP</span>
       </li>
-
       <li class="mission">
         <span class="mission-title">🧪 Criar layout do dashboard</span>
         <span class="mission-xp">+30 XP</span>
       </li>
-
       <li class="mission">
         <span class="mission-title">🎨 Ajustar identidade visual</span>
         <span class="mission-xp">+10 XP</span>
       </li>
     </ul>
   </section>
-</main>
+
+</div>
 {% endblock %}

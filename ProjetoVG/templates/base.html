@@ -2,48 +2,46 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>{% block title %}VentureGotchi{% endblock %}</title>
 
-    <!-- CSS principal -->
-    <link rel="stylesheet" href="{% static 'css/reset.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/variables.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/components.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
+    <!-- CSS global -->
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/variables.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/components.css' %}">
 
-    <!-- CSS específico da página -->
     {% block extra_css %}{% endblock %}
   </head>
 
   <body class="{% block body_class %}{% endblock %}">
-    <!-- Topbar global -->
-   <header class="topbar">
-  <div class="topbar-left">
-    <h1>VentureGotchi</h1>
-  </div>
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <h1>VentureGotchi</h1>
+      </div>
 
-  {% if user.is_authenticated %}
-  <div class="topbar-center">
-    <span class="user-level">{{ request.user.username }}</span>
-  </div>
+      {% if user.is_authenticated %}
+      <div class="topbar-center">
+        <span class="user-level">{{ request.user.username }}</span>
+      </div>
 
-  <div class="topbar-right">
-    <form method="post" action="{% url 'logout' %}">
-      {% csrf_token %}
-      <button type="submit">Sair</button>
-    </form>
-  </div>
-  {% endif %}
-</header>
+      <div class="topbar-right">
+        <form method="post" action="{% url 'logout' %}">
+          {% csrf_token %}
+          <button type="submit">Sair</button>
+        </form>
+      </div>
+      {% endif %}
+    </header>
 
+    <!-- CONTEÚDO DAS PÁGINAS -->
+    <main>
+      {% block content %}{% endblock %}
+    </main>
 
-    <!-- Conteúdo das páginas -->
-    <main>{% block content %}{% endblock %}</main>
-
-    <!-- JS -->
     <script src="{% static 'js/main.js' %}"></script>
   </body>
 </html>
